@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>كتاب قانون الأعمال: إنهاء عقد العمل بإرادة أحد طرفيه أو كليهما</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800;900&family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;500;700;800;900&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070a10;
+      --gold-primary: #d4af37;
+      --gold-bright: #fce8a6;
+      --gold-gradient: linear-gradient(135deg, #fdf0c2 0%, #d4af37 45%, #997314 100%);
+      --text-primary: #ffffff;
+      --text-secondary: #e2e8f0;
+      --text-muted: #a0aec0;
+      --font-thuluth: 'Amiri', 'Amiri Quran', 'Aref Ruqaa', 'Traditional Arabic', serif;
+      --font-qomra: 'Alexandria', 'Tajawal', 'Readex Pro', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-qomra);
+      background: radial-gradient(circle at 50% 15%, #1a2a44 0%, #0a0e17 65%, #030508 100%);
+      color: var(--text-primary);
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      direction: rtl;
+      user-select: none;
+      perspective: 2500px;
+    }
+
+    .presentation-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.2rem 2.8rem;
+      position: relative;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.9rem;
+      border-bottom: 1.5px solid rgba(212, 175, 55, 0.3);
+      z-index: 30;
+    }
+
+    .top-left, .top-right {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .course-badge {
+      background: rgba(212, 175, 55, 0.14);
+      border: 1.5px solid rgba(212, 175, 55, 0.55);
+      color: var(--gold-bright);
+      padding: 0.45rem 1.3rem;
+      border-radius: 9999px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.22);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .supervisor-text {
+      font-size: 1.02rem;
+      color: var(--text-secondary);
+    }
+
+    .supervisor-name {
+      color: var(--gold-bright);
+      font-weight: 800;
+    }
+
+    .slide-counter {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(212, 175, 55, 0.35);
+      padding: 0.4rem 1.1rem;
+      border-radius: 10px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--gold-bright);
+    }
+
+    .btn-close-book-nav {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1.5px solid var(--gold-primary);
+      color: var(--gold-bright);
+      padding: 0.45rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      font-family: var(--font-qomra);
+    }
+
+    .btn-close-book-nav:hover {
+      background: var(--gold-primary);
+      color: #0a0e17;
+      transform: translateY(-2px);
+    }
+
+    /* Main Stage */
+    .slide-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: calc(100vh - 145px);
+      position: relative;
+      perspective: 2500px;
+    }
+
+    /* 3D Book Covers */
+    .book-cover-wrapper {
+      width: 960px;
+      height: 540px;
+      max-width: 95vw;
+      max-height: 76vh;
+      position: relative;
+      transform-style: preserve-3d;
+      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 60px rgba(212, 175, 55, 0.3);
+      border-radius: 16px;
+      transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    .book-leather-cover {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1d130d 0%, #291b12 50%, #140c07 100%);
+      border: 3.5px solid #825f1e;
+      border-radius: 16px;
+      padding: 26px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.85), inset 0 0 20px rgba(212, 175, 55, 0.35);
+    }
+
+    .gold-corner {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border: 3.5px solid var(--gold-primary);
+      z-index: 5;
+    }
+    .gold-corner.top-right { top: 10px; right: 10px; border-left: none; border-bottom: none; border-top-right-radius: 10px; }
+    .gold-corner.top-left { top: 10px; left: 10px; border-right: none; border-bottom: none; border-top-left-radius: 10px; }
+    .gold-corner.bottom-right { bottom: 10px; right: 10px; border-left: none; border-top: none; border-bottom-right-radius: 10px; }
+    .gold-corner.bottom-left { bottom: 10px; left: 10px; border-right: none; border-top: none; border-bottom-left-radius: 10px; }
+
+    .book-ornate-border {
+      border: 2px solid rgba(212, 175, 55, 0.65);
+      height: 100%;
+      border-radius: 12px;
+      padding: 24px 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 80%);
+    }
+
+    .thuluth-cover-title {
+      font-family: var(--font-thuluth);
+      font-size: 3.6rem;
+      line-height: 1.35;
+      font-weight: 700;
+      color: #fffaf0;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.85), 0 0 40px rgba(212, 175, 55, 0.5);
+      text-align: center;
+    }
+
+    .cover-sub-text {
+      font-family: var(--font-qomra);
+      font-size: 1.25rem;
+      color: var(--gold-bright);
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .cover-authors-box {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1.5px solid rgba(212, 175, 55, 0.4);
+      padding: 0.8rem 1.8rem;
+      border-radius: 10px;
+    }
+
+    .btn-open-book {
+      background: var(--gold-gradient);
+      color: #0d0a06;
+      border: none;
+      padding: 0.95rem 2.6rem;
+      border-radius: 14px;
+      font-size: 1.25rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+      font-family: var(--font-qomra);
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .btn-open-book:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 45px rgba(212, 175, 55, 0.8);
+      filter: brightness(1.12);
+    }
+
+    /* 3D Folding Page Leaves */
+    .book-open-spread {
+      width: 100%;
+      max-width: 1460px;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+
+    .book-page-leaf {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(16, 23, 38, 0.96) 0%, rgba(11, 16, 28, 0.98) 100%);
+      border: 2px solid rgba(212, 175, 55, 0.45);
+      border-radius: 16px;
+      padding: 1.6rem 3rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2.6rem;
+      align-items: center;
+      transform-origin: right center;
+      transform-style: preserve-3d;
+      opacity: 0;
+      pointer-events: none;
+      transform: rotateY(80deg) scale(0.95);
+      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 30px 70px rgba(0,0,0,0.85);
+    }
+
+    .book-page-leaf.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: rotateY(0deg) scale(1);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.65), 0 0 35px rgba(212, 175, 55, 0.25);
+    }
+
+    .book-page-leaf.turned-past {
+      transform: rotateY(-90deg) scale(0.95);
+      opacity: 0;
+    }
+
+    /* Side Arabesque Filigrees */
+    .side-arabesque-ornament {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 28px;
+      pointer-events: none;
+      z-index: 15;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 0;
+      opacity: 0.75;
+    }
+
+    .side-arabesque-ornament.right { right: 8px; }
+    .side-arabesque-ornament.left { left: 8px; }
+
+    .arabesque-pattern-svg {
+      width: 18px;
+      height: 100%;
+      fill: none;
+      stroke: var(--gold-primary);
+      stroke-width: 1.5;
+      filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.4));
+    }
+
+    .page-spine-crease {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 30px;
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .slide-content-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.95rem;
+      padding-left: 0.8rem;
+    }
+
+    .section-tag {
+      align-self: flex-start;
+      padding: 0.35rem 1.1rem;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      background: rgba(212, 175, 55, 0.18);
+      border: 1.5px solid var(--gold-primary);
+      color: var(--gold-bright);
+      font-family: var(--font-qomra);
+    }
+
+    /* LARGE THULUTH TITLE - ENLARGED & GRAND */
+    .slide-title-thuluth {
+      font-family: var(--font-thuluth);
+      font-size: 3.35rem;
+      line-height: 1.28;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 4px 14px rgba(0, 0, 0, 0.8), 0 0 35px rgba(212, 175, 55, 0.4);
+      letter-spacing: 0.5px;
+    }
+
+    .slide-subtitle {
+      font-family: var(--font-qomra);
+      font-size: 1.32rem;
+      color: var(--gold-bright);
+      font-weight: 700;
+      line-height: 1.45;
+      border-right: 4.5px solid var(--gold-primary);
+      padding-right: 1rem;
+    }
+
+    /* LARGE QOMRA BULLET POINTS - SIGNIFICANTLY ENLARGED */
+    .points-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-top: 0.35rem;
+    }
+
+    .point-card {
+      background: rgba(20, 30, 50, 0.88);
+      backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(212, 175, 55, 0.32);
+      border-radius: 14px;
+      padding: 0.95rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .point-card:hover {
+      border-color: var(--gold-bright);
+      transform: translateX(-10px);
+      background: rgba(28, 44, 74, 0.98);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
+    }
+
+    .point-number {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border-radius: 50%;
+      background: var(--gold-gradient);
+      color: #070a10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.25rem;
+      font-family: 'Alexandria', sans-serif;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
+    }
+
+    .point-text {
+      font-size: 1.32rem;
+      color: #ffffff;
+      line-height: 1.52;
+      font-weight: 600;
+      font-family: var(--font-qomra);
+      letter-spacing: 0.2px;
+    }
+
+    .slide-media-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .image-card-wrapper {
+      width: 100%;
+      height: 88%;
+      max-height: 480px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.75), 0 0 35px rgba(212, 175, 55, 0.25);
+      border: 2.5px solid rgba(212, 175, 55, 0.45);
+      background: #0f1624;
+    }
+
+    .image-card-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .image-card-wrapper:hover img {
+      transform: scale(1.04);
+    }
+
+    .image-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(7, 10, 16, 0.96) 0%, rgba(7, 10, 16, 0.5) 60%, transparent 100%);
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .image-stamp-badge {
+      background: rgba(212, 175, 55, 0.2);
+      border: 1.5px solid var(--gold-primary);
+      color: var(--gold-bright);
+      font-size: 0.88rem;
+      font-weight: 800;
+      padding: 0.35rem 0.9rem;
+      border-radius: 8px;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Bottom Bar */
+    .bottom-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.9rem;
+      border-top: 1.5px solid rgba(212, 175, 55, 0.25);
+      z-index: 30;
+    }
+
+    .slide-dots {
+      display: flex;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .slide-dot {
+      width: 35px;
+      height: 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.22);
+      cursor: pointer;
+      transition: all 0.35s ease;
+      border: none;
+    }
+
+    .slide-dot.active {
+      width: 65px;
+      background: var(--gold-gradient);
+      box-shadow: 0 0 15px var(--gold-primary);
+    }
+
+    .controls-group {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .btn-control {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(212, 175, 55, 0.35);
+      color: var(--text-primary);
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      font-size: 1.25rem;
+    }
+
+    .btn-control:hover {
+      background: var(--gold-primary);
+      color: #070a10;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 22px rgba(212, 175, 55, 0.45);
+    }
+
+    .btn-action-primary {
+      background: var(--gold-gradient);
+      color: #070a10;
+      border: none;
+      padding: 0.7rem 1.6rem;
+      border-radius: 12px;
+      font-weight: 900;
+      font-size: 1.05rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      box-shadow: 0 5px 20px rgba(212, 175, 55, 0.35);
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      font-family: var(--font-qomra);
+    }
+
+    .btn-action-primary:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.12);
+      box-shadow: 0 8px 28px rgba(212, 175, 55, 0.55);
+    }
+
+    .keyboard-hint {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .key-cap {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      padding: 0.2rem 0.55rem;
+      font-family: monospace;
+      font-size: 0.82rem;
+      color: var(--gold-bright);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="presentation-container">
+    <!-- Top Header -->
+    <header class="top-bar">
+      <div class="top-left">
+        <div class="course-badge">
+          <span>⚖️</span>
+          <span>Business Law | قانون الأعمال</span>
+        </div>
+        <div class="supervisor-text">
+          <span>إشراف الأستاذة: </span>
+          <span class="supervisor-name">م.م. هالة رحمن (Ass.L. Hala Rahman)</span>
+        </div>
+      </div>
+      <div class="top-right">
+        <a href="دليل_شرح_التقرير_الشامل.html" target="_blank" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.22) 0%, rgba(212, 175, 55, 0.1) 100%); border: 1.5px solid var(--gold-primary); color: #fff9e6; padding: 0.45rem 1.2rem; border-radius: 10px; font-size: 0.95rem; font-weight: 800; text-decoration: none; display: flex; align-items: center; gap: 6px;">
+          <span>📖 شرح التقرير الشامل</span>
+        </a>
+        <a href="تقرير_انهاء_عقد_العمل_6_صفحات.pdf" target="_blank" download style="background: rgba(255, 255, 255, 0.08); border: 1.5px solid rgba(212, 175, 55, 0.45); color: #fce8a6; padding: 0.45rem 1.2rem; border-radius: 10px; font-size: 0.95rem; font-weight: 800; text-decoration: none; display: flex; align-items: center; gap: 6px;">
+          <span>📥 وثيقة التقرير PDF</span>
+        </a>
+        <span class="slide-counter" id="slideCounter">غلاف الكتاب</span>
+        <button class="btn-close-book-nav" id="closeBookNavBtn" style="display: none;" title="إغلاق الكتاب">
+          <span>📕 إغلاق الكتاب</span>
+        </button>
+        <button class="btn-control" id="fullscreenBtn" title="ملء الشاشة (F)">⛶</button>
+      </div>
+    </header>
+
+    <!-- Main 3D Stage -->
+    <main class="slide-stage" id="stage">
+
+      <!-- 1. Front Leather Cover -->
+      <div class="book-cover-wrapper" id="frontCover">
+        <div class="book-leather-cover">
+          <div class="gold-corner top-right"></div>
+          <div class="gold-corner top-left"></div>
+          <div class="gold-corner bottom-right"></div>
+          <div class="gold-corner bottom-left"></div>
+
+          <div class="book-ornate-border">
+            <div style="font-size: 1.05rem; color: #fce8a6; font-weight: 800;">
+              ⚖️ مقرر قانون الأعمال (Business Law)
+            </div>
+
+            <div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+              <div style="font-size: 2.6rem; filter: drop-shadow(0 0 15px #d4af37);">⚖️</div>
+              <h1 class="thuluth-cover-title">
+                إنهاء عقد العمل<br>
+                بإرادة أحد طرفيه أو كليهما
+              </h1>
+              <p class="cover-sub-text">
+                الفصل الخامس — المبحث الثاني (ص 324 - 366)<br>
+                وفقاً لقانون العمل والفقه العمالي المقارن
+              </p>
+              <div class="cover-authors-box">
+                <div style="display: flex; flex-direction: column; text-align: center;">
+                  <span style="font-size: 0.88rem; color: #fce8a6; font-weight: 700;">إشراف الأستاذة:</span>
+                  <span style="font-size: 1.05rem; color: #fff; font-weight: 800;">م.م. هالة رحمن (Ass.L. Hala Rahman)</span>
+                </div>
+                <div style="width: 1px; height: 35px; background: rgba(212, 175, 55, 0.45);"></div>
+                <div style="display: flex; flex-direction: column; text-align: center;">
+                  <span style="font-size: 0.88rem; color: #fce8a6; font-weight: 700;">المرجع المعتمد:</span>
+                  <span style="font-size: 1.05rem; color: #fff; font-weight: 800;">د. عدنان العابد & د. يوسف إلياس (جامعة بغداد)</span>
+                </div>
+              </div>
+
+              <button class="btn-open-book" id="openBookBtn">
+                <span>📖 افتح الكتاب لتصفح التقرير</span>
+              </button>
+            </div>
+
+            <div style="font-size: 0.9rem; color: rgba(212, 175, 55, 0.85); font-weight: 700;">
+              العام الأكاديمي 2026 — أربيل / بغداد
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Internal Folding Pages with Arabesque Borders -->
+      <div class="book-open-spread" id="spreadContainer" style="display: none;">
+
+        <!-- Page 1 -->
+        <div class="book-page-leaf active" data-index="0">
+          <div class="page-spine-crease"></div>
+          <div class="side-arabesque-ornament right">
+            <svg class="arabesque-pattern-svg" viewBox="0 0 20 400" preserveAspectRatio="none"><path d="M10,0 L18,20 L10,40 L2,20 Z" /><circle cx="10" cy="50" r="3" /><path d="M10,60 L18,80 L10,100 L2,80 Z" /><circle cx="10" cy="110" r="3" /><path d="M10,120 L18,140 L10,160 L2,140 Z" /><circle cx="10" cy="170" r="3" /><path d="M10,180 L18,200 L10,220 L2,200 Z" /><circle cx="10" cy="230" r="3" /><path d="M10,240 L18,260 L10,280 L2,260 Z" /><circle cx="10" cy="290" r="3" /><path d="M10,300 L18,320 L10,340 L2,320 Z" /></svg>
+          </div>
+          <div class="side-arabesque-ornament left">
+            <svg class="arabesque-pattern-svg" viewBox="0 0 20 400" preserveAspectRatio="none"><path d="M10,0 L18,20 L10,40 L2,20 Z" /><circle cx="10" cy="50" r="3" /><path d="M10,60 L18,80 L10,100 L2,80 Z" /><circle cx="10" cy="110" r="3" /><path d="M10,120 L18,140 L10,160 L2,140 Z" /><circle cx="10" cy="170" r="3" /><path d="M10,180 L18,200 L10,220 L2,200 Z" /><circle cx="10" cy="230" r="3" /><path d="M10,240 L18,260 L10,280 L2,260 Z" /><circle cx="10" cy="290" r="3" /><path d="M10,300 L18,320 L10,340 L2,320 Z" /></svg>
+          </div>
+
+          <div class="slide-content-col">
+            <div class="section-tag">غلاف العرض التقديمي الأكاديمي</div>
+            <h1 class="slide-title-thuluth">إنهاء عقد العمل بإرادة أحد طرفيه أو كليهما</h1>
+            <p class="slide-subtitle">مقرر قانون الأعمال (Business Law) — بإشراف: م.م. هالة رحمن (Ass.L. Hala Rahman)</p>
+            <div class="points-list">
+              <div class="point-card"><div class="point-number">1</div><div class="point-text">الموضوع الدراسي: المبحث الثاني من الفصل الخامس في قانون العمل العراقي.</div></div>
+              <div class="point-card"><div class="point-number">2</div><div class="point-text">المرجع المعتمد: مؤلف الدكتور عدنان العابد والدكتور يوسف إلياس.</div></div>
+              <div class="point-card"><div class="point-number">3</div><div class="point-text">التأصيل القانوني: انحلال الرابطة العقدية بالرضا المشترك أو بالإرادة المنفردة.</div></div>
+              <div class="point-card"><div class="point-number">4</div><div class="point-text">التوازن التشريعي: صون استقرار الاستثمار وحماية حقوق الطبقة العاملة.</div></div>
+              <div class="point-card"><div class="point-number">5</div><div class="point-text">التوثيق الرسمي: مطابقة عقود العمل المعتمدة وفقاً لمعايير وزارة العمل.</div></div>
+            </div>
+            <div style="font-size: 0.92rem; color: #fae69e; margin-top: 0.3rem; font-weight: 700;">📖 كتاب قانون العمل (ص 324 - 366) | كلية القانون - جامعة بغداد</div>
+          </div>
+          <div class="slide-media-col">
+            <div class="image-card-wrapper">
+              <img src="images/erbil_cover_desk_1790243136096.jpg" alt="قلعة أربيل ومكتب المحاماة الفاخر">
+              <div class="image-card-overlay">
+                <div class="image-stamp-badge">⚖️ عقد عمل موثق — إطلالة قلعة أربيل</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">مكتب تنفيذي راقٍ</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="book-page-leaf" data-index="1">
+          <div class="page-spine-crease"></div>
+          <div class="side-arabesque-ornament right"><svg class="arabesque-pattern-svg" viewBox="0 0 20 400" preserveAspectRatio="none"><path d="M10,0 L18,20 L10,40 L2,20 Z" /><circle cx="10" cy="50" r="3" /><path d="M10,60 L18,80 L10,100 L2,80 Z" /><circle cx="10" cy="110" r="3" /><path d="M10,120 L18,140 L10,160 L2,140 Z" /><circle cx="10" cy="170" r="3" /><path d="M10,180 L18,200 L10,220 L2,200 Z" /><circle cx="10" cy="230" r="3" /><path d="M10,240 L18,260 L10,280 L2,260 Z" /><circle cx="10" cy="290" r="3" /><path d="M10,300 L18,320 L10,340 L2,320 Z" /></svg></div>
+          <div class="side-arabesque-ornament left"><svg class="arabesque-pattern-svg" viewBox="0 0 20 400" preserveAspectRatio="none"><path d="M10,0 L18,20 L10,40 L2,20 Z" /><circle cx="10" cy="50" r="3" /><path d="M10,60 L18,80 L10,100 L2,80 Z" /><circle cx="10" cy="110" r="3" /><path d="M10,120 L18,140 L10,160 L2,140 Z" /><circle cx="10" cy="170" r="3" /><path d="M10,180 L18,200 L10,220 L2,200 Z" /><circle cx="10" cy="230" r="3" /><path d="M10,240 L18,260 L10,280 L2,260 Z" /><circle cx="10" cy="290" r="3" /><path d="M10,300 L18,320 L10,340 L2,320 Z" /></svg></div>
+
+          <div class="slide-content-col">
+            <div class="section-tag" style="border-color: #10b981; color: #6ee7b7;">المبحث الثاني - أولاً</div>
+            <h1 class="slide-title-thuluth">انتهاء العقد باتفاق إرادتي طرفيه (التقايل الرضائي)</h1>
+            <p class="slide-subtitle">انحلال الرابطة العقدية بالتراضي المشترك وسلطان الإرادة (ص 324)</p>
+            <div class="points-list">
+              <div class="point-card"><div class="point-number">1</div><div class="point-text">مبدأ التقايل: تطبيق قاعدة «العقد شريعة المتعاقدين» في إنهائه رضائياً.</div></div>
+              <div class="point-card"><div class="point-number">2</div><div class="point-text">سلامة الرضا: خلو إرادة العامل من أي إكراه مادي أو معنوي صادر عن الإدارة.</div></div>
+              <div class="point-card"><div class="point-number">3</div><div class="point-text">بطلان التنازل: بطلان إسقاط الحقوق الآمرة كمكافأة نهاية الخدمة والإجازات.</div></div>
+              <div class="point-card"><div class="point-number">4</div><div class="point-text">التوثيق الخطي: اشتراط عقد مخالصة كتابي رسمي موقع ومختوم قانوناً.</div></div>
+              <div class="point-card"><div class="point-number">5</div><div class="point-text">شهادة الخبرة: التزام صاحب العمل بتسليم العامل براءة ذمة وشهادة خدمة مجانية.</div></div>
+            </div>
+            <div style="font-size: 0.92rem; color: #fae69e; margin-top: 0.3rem; font-weight: 700;">📖 المادة (324 وما بعدها) | التقايل الرضائي وحماية الطرف الأضعف</div>
+          </div>
+          <div class="slide-media-col">
+            <div class="image-card-wrapper">
+              <img src="images/erbil_mutual_contract_1790243165923.jpg" alt="عقود عمل موثقة وإطلالة فندق ديفان أربيل">
+              <div class="image-card-overlay">
+                <div class="image-stamp-badge">⚖️ إطلالة فندق ديفان أربيل — شارع كولان</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">تسوية رضائية موثقة</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Page 3 -->
+        <div class="book-page-leaf" data-index="2">
+          <div class="page-spine-crease"></div>
+          <div class="side-arabesque-ornament right"><svg class="arabesque-pattern-svg" viewBox="0 0 20 400" preserveAspectRatio="none"><path d="M10,0 L18,20 L10,40 L2,20 Z" /><circle cx="10" cy="50" r="3" /><path d="M10,60 L18,80 L10,100 L2,80 Z" /><circle cx="10" cy="110" r="3" /><path d="M10,120 L18,140 L10,160 L2,140 Z" /><circle cx="10" cy="170" r="3" /><path d="M10,180 L18,200 L10,220 L2,200 Z" /><circle cx="10" cy="230" r="3" /><path d="M10,240 L18,260 L10,280 L2,260 Z" /><circle cx="10" cy="290" r="3" /><path d="M10,300 L18,320 L10,340 L2,320 Z" /></svg></div>
+          <div class="side-arabesque-ornament left"><svg class="arabesque-pattern-svg" viewBox="0 0 20 400" preserveAspectRatio="none"><path d="M10,0 L18,20 L10,40 L2,20 Z" /><circle cx="10" cy="50" r="3" /><path d="M10,60 L18,80 L10,100 L2,80 Z" /><circle cx="10" cy="110" r="3" /><path d="M10,120 L18,140 L10,160 L2,140 Z" /><circle cx="10" cy="170" r="3" /><path d="M10,180 L18,200 L10,220 L2,200 Z" /><circle cx="10" cy="230" r="3" /><path d="M10,240 L18,260 L10,280 L2,260 Z" /><circle cx="10" cy="290" r="3" /><path d="M10,300 L18,320 L10,340 L2,320 Z" /></svg></div>
+
+          <div class="slide-content-col">
+            <div class="section-tag" style="border-color: #3b82f6; color: #93c5fd;">المبحث الثاني - ثانياً</div>
+            <h1 class="slide-title-thuluth">إنهاء العقد بالإرادة المنفردة للعامل (الاستقالة والترك)</h1>
+            <p class="slide-subtitle">ممارسة العامل لحريته الدستورية في العمل وضوابط الإخطار (ص 328)</p>
+            <div class="points-list">
+              <div class="point-card"><div class="point-number">1</div><div class="point-text">حرية العمل: حظر السخرة وإقرار حق العامل في الاستقالة بإرادته المنفردة.</div></div>
+              <div class="point-card"><div class="point-number">2</div><div class="point-text">مهلة الإخطار: توجيه إنذار كتابي رسمي قبل 30 يوماً لضمان انتظام العمل.</div></div>
+              <div class="point-card"><div class="point-number">3</div><div class="point-text">الاستمرار بالعمل: التزام العامل بأداء واجباته وتقاضي أجره خلال مهلة الإنذار.</div></div>
+              <div class="point-card"><div class="point-number">4</div><div class="point-text">الترك الفوري المبرر: جواز المغادرة الفورية عند اعتداء صاحب العمل أو خفض الأجر.</div></div>
+              <div class="point-card"><div class="point-number">5</div><div class="point-text">السلامة المهنية: حق العامل بإنهاء العقد فوراً عند ثبوت خطر داهم يهدد صحته.</div></div>
+            </div>
+            <div style="font-size: 0.92rem; color: #fae69e; margin-top: 0.3rem; font-weight: 700;">📖 المادة (328 وما بعدها) | الاستقالة والحالات الاستثنائية للترك المشروع</div>
+          </div>
+          <div class="slide-media-col">
+            <div class="image-card-wrapper">
+              <img src="images/erbil_resignation_desk_1790243200256.jpg" alt="إشعار استقالة في مكتب تنفيذي بأربيل">
+              <div class="image-card-overlay">
+                <div class="image-stamp-badge">⚖️ إشعار استقالة رسمي — أربيل</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">مكتب تنفيذي فخم</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Page 4 -->
+        <div class="book-page-leaf" data-index="3">
+          <div class="page-spine-crease"></div>
+          <div class="side-arabesque-ornament right"><svg class="arabesque-pattern-svg" viewBox="0 0 20 400" preserveAspectRatio="none"><path d="M10,0 L18,20 L10,40 L2,20 Z" /><circle cx="10" cy="50" r="3" /><path d="M10,60 L18,80 L10,100 L2,80 Z" /><circle cx="10" cy="110" r="3" /><path d="M10,120 L18,140 L10,160 L2,140 Z" /><circle cx="10" cy="170" r="3" /><path d="M10,180 L18,200 L10,220 L2,200 Z" /><circle cx="10" cy="230" r="3" /><path d="M10,240 L18,260 L10,280 L2,260 Z" /><circle cx="10" cy="290" r="3" /><path d="M10,300 L18,320 L10,340 L2,320 Z" /></svg></div>
+          <div class="side-arabesque-ornament left"><svg class="arabesque-pattern-svg" viewBox="0 0 20 400" preserveAspectRatio="none"><path d="M10,0 L18,20 L10,40 L2,20 Z" /><circle cx="10" cy="50" r="3" /><path d="M10,60 L18,80 L10,100 L2,80 Z" /><circle cx="10" cy="110" r="3" /><path d="M10,120 L18,140 L10,160 L2,140 Z" /><circle cx="10" cy="170" r="3" /><path d="M10,180 L18,200 L10,220 L2,200 Z" /><circle cx="10" cy="230" r="3" /><path d="M10,240 L18,260 L10,280 L2,260 Z" /><circle cx="10" cy="290" r="3" /><path d="M10,300 L18,320 L10,340 L2,320 Z" /></svg></div>
+
+          <div class="slide-content-col">
+            <div class="section-tag" style="border-color: #f59e0b; color: #fcd34d;">المبحث الثاني - ثالثاً</div>
+            <h1 class="slide-title-thuluth">إنهاء العقد بإرادة صاحب العمل والفصل التعسفي</h1>
+            <p class="slide-subtitle">قيود سلطة الإدارة في الإنهاء وضمانات الحماية من الفصل الجائر (ص 334)</p>
+            <div class="points-list">
+              <div class="point-card"><div class="point-number">1</div><div class="point-text">تقييد سلطة الإنهاء: حظر إنهاء العقد غير محدد المدة دون سبب مشروع وجدي.</div></div>
+              <div class="point-card"><div class="point-number">2</div><div class="point-text">الأسباب المقبولة: إعادة الهيكلة الاقتصادية، عدم الكفاءة المثبتة، وبلوغ التقاعد.</div></div>
+              <div class="point-card"><div class="point-number">3</div><div class="point-text">معيار التعسف: بطلان الفصل المرتبط بنشاط نقابي، شكوى قانونية، أو تمييز.</div></div>
+              <div class="point-card"><div class="point-number">4</div><div class="point-text">إعادة العامل: اختصاص محكمة العمل بالحكم بإعادة المفصول وصرف كامل أجوره.</div></div>
+              <div class="point-card"><div class="point-number">5</div><div class="point-text">التعويض الجابر: استحقاق تعويض مالي عادل وبدل مهلة الإخطار ومكافأة الخدمة.</div></div>
+            </div>
+            <div style="font-size: 0.92rem; color: #fae69e; margin-top: 0.3rem; font-weight: 700;">📖 المادة (334 وما بعدها) | الحظر الصارم للإنهاء التعسفي</div>
+          </div>
+          <div class="slide-media-col">
+            <div class="image-card-wrapper">
+              <img src="images/erbil_employer_termination_1790243235199.jpg" alt="قاعة اجتماعات كبرى في أربيل">
+              <div class="image-card-overlay">
+                <div class="image-stamp-badge">⚖️ ملف إنهاء الخدمة — أبراج أربيل</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">مجلس إدارة تنفيذي</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Page 5 -->
+        <div class="book-page-leaf" data-index="4">
+          <div class="page-spine-crease"></div>
+          <div class="side-arabesque-ornament right"><svg class="arabesque-pattern-svg" viewBox="0 0 20 400" preserveAspectRatio="none"><path d="M10,0 L18,20 L10,40 L2,20 Z" /><circle cx="10" cy="50" r="3" /><path d="M10,60 L18,80 L10,100 L2,80 Z" /><circle cx="10" cy="110" r="3" /><path d="M10,120 L18,140 L10,160 L2,140 Z" /><circle cx="10" cy="170" r="3" /><path d="M10,180 L18,200 L10,220 L2,200 Z" /><circle cx="10" cy="230" r="3" /><path d="M10,240 L18,260 L10,280 L2,260 Z" /><circle cx="10" cy="290" r="3" /><path d="M10,300 L18,320 L10,340 L2,320 Z" /></svg></div>
+          <div class="side-arabesque-ornament left"><svg class="arabesque-pattern-svg" viewBox="0 0 20 400" preserveAspectRatio="none"><path d="M10,0 L18,20 L10,40 L2,20 Z" /><circle cx="10" cy="50" r="3" /><path d="M10,60 L18,80 L10,100 L2,80 Z" /><circle cx="10" cy="110" r="3" /><path d="M10,120 L18,140 L10,160 L2,140 Z" /><circle cx="10" cy="170" r="3" /><path d="M10,180 L18,200 L10,220 L2,200 Z" /><circle cx="10" cy="230" r="3" /><path d="M10,240 L18,260 L10,280 L2,260 Z" /><circle cx="10" cy="290" r="3" /><path d="M10,300 L18,320 L10,340 L2,320 Z" /></svg></div>
+
+          <div class="slide-content-col">
+            <div class="section-tag" style="border-color: #ef4444; color: #fca5a5;">المبحث الثاني - رابعاً</div>
+            <h1 class="slide-title-thuluth">الفصل التأديبي لارتكاب الخطأ الجسيم</h1>
+            <p class="slide-subtitle">العقوبة التأديبية القصوى المسقطة للمهلة والمكافأة (ص 346)</p>
+            <div class="points-list">
+              <div class="point-card"><div class="point-number">1</div><div class="point-text">حصرية الخطأ الجسيم: حصر أسباب الفصل الفوري بوقائع خطيرة حددها القانون.</div></div>
+              <div class="point-card"><div class="point-number">2</div><div class="point-text">الضرر المادي الفادح: إتلاف الممتلكات عمداً مع إبلاغ الشرطة خلال 24 ساعة.</div></div>
+              <div class="point-card"><div class="point-number">3</div><div class="point-text">إفشاء الأسرار: تسريب الأسرار التجارية أو الصناعية الملحقة بضرر محقق.</div></div>
+              <div class="point-card"><div class="point-number">4</div><div class="point-text">الغياب غير المبرر: الانقطاع غير المشروع لأكثر من المدة القانونية بعد إنذار مسجل.</div></div>
+              <div class="point-card"><div class="point-number">5</div><div class="point-text">الضمانات الجوهرية: إلزامية التحقيق الخطي، كفالة حق الدفاع، والطعن القضائي.</div></div>
+            </div>
+            <div style="font-size: 0.92rem; color: #fae69e; margin-top: 0.3rem; font-weight: 700;">📖 المادة (346 وما بعدها) | ضوابط الخطأ الجسيم ورقابة محكمة العمل</div>
+          </div>
+          <div class="slide-media-col">
+            <div class="image-card-wrapper">
+              <img src="images/erbil_disciplinary_gavel_1790243270695.jpg" alt="محكمة تحكيم العمل أربيل والمطرقة والميزان">
+              <div class="image-card-overlay">
+                <div class="image-stamp-badge">⚖️ محكمة تحكيم العمال — أربيل</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">رقابة القضاء العمالي</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Page 6 -->
+        <div class="book-page-leaf" data-index="5">
+          <div class="page-spine-crease"></div>
+          <div class="side-arabesque-ornament right"><svg class="arabesque-pattern-svg" viewBox="0 0 20 400" preserveAspectRatio="none"><path d="M10,0 L18,20 L10,40 L2,20 Z" /><circle cx="10" cy="50" r="3" /><path d="M10,60 L18,80 L10,100 L2,80 Z" /><circle cx="10" cy="110" r="3" /><path d="M10,120 L18,140 L10,160 L2,140 Z" /><circle cx="10" cy="170" r="3" /><path d="M10,180 L18,200 L10,220 L2,200 Z" /><circle cx="10" cy="230" r="3" /><path d="M10,240 L18,260 L10,280 L2,260 Z" /><circle cx="10" cy="290" r="3" /><path d="M10,300 L18,320 L10,340 L2,320 Z" /></svg></div>
+          <div class="side-arabesque-ornament left"><svg class="arabesque-pattern-svg" viewBox="0 0 20 400" preserveAspectRatio="none"><path d="M10,0 L18,20 L10,40 L2,20 Z" /><circle cx="10" cy="50" r="3" /><path d="M10,60 L18,80 L10,100 L2,80 Z" /><circle cx="10" cy="110" r="3" /><path d="M10,120 L18,140 L10,160 L2,140 Z" /><circle cx="10" cy="170" r="3" /><path d="M10,180 L18,200 L10,220 L2,200 Z" /><circle cx="10" cy="230" r="3" /><path d="M10,240 L18,260 L10,280 L2,260 Z" /><circle cx="10" cy="290" r="3" /><path d="M10,300 L18,320 L10,340 L2,320 Z" /></svg></div>
+
+          <div class="slide-content-col">
+            <div class="section-tag" style="border-color: #8b5cf6; color: #c4b5fd;">خلاصة المقارنة والنتائج</div>
+            <h1 class="slide-title-thuluth">المقارنة التشريعية الشاملة وقواعد التوازن العمالي</h1>
+            <p class="slide-subtitle">استخلاص الفروق الجوهرية والتوصيات الختامية لمادة قانون الأعمال</p>
+            <div class="points-list">
+              <div class="point-card"><div class="point-number">1</div><div class="point-text">التقايل الرضائي: إرادة مشتركة، استحقاق كامل المكافأة، وبراءة ذمة خطية.</div></div>
+              <div class="point-card"><div class="point-number">2</div><div class="point-text">استقالة العامل: إرادة منفردة مقيدة بمهلة إنذار لحماية نشاط المشروع.</div></div>
+              <div class="point-card"><div class="point-number">3</div><div class="point-text">إنهاء صاحب العمل: خاضع لرقابة لجان التفتيش لمنع الطرد الكيدي التعسفي.</div></div>
+              <div class="point-card"><div class="point-number">4</div><div class="point-text">الفصل التأديبي: جزاء استثنائي مشروط بالتحقيق وثبوت الخطأ والرقابة القضائية.</div></div>
+              <div class="point-card"><div class="point-number">5</div><div class="point-text">التوصية التشريعية: تفعيل لجان التوفيق والوساطة الودية وتوثيق العقود إلكترونياً.</div></div>
+            </div>
+            <div style="font-size: 0.92rem; color: #fae69e; margin-top: 0.3rem; font-weight: 700;">📖 دراسة مقارنة | كتاب د. عدنان العابد ود. يوسف إلياس (بغداد)</div>
+          </div>
+          <div class="slide-media-col">
+            <div class="image-card-wrapper">
+              <img src="images/erbil_library_comparison_1790243302843.jpg" alt="المكتبة القانونية الكبرى وقلعة أربيل">
+              <div class="image-card-overlay">
+                <div class="image-stamp-badge">⚖️ مراجع قانون العمل — أربيل</div>
+                <div style="font-size: 0.85rem; color: #cbd5e1;">المكتبة الأكاديمية</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3. Back Leather Cover -->
+      <div class="book-cover-wrapper" id="backCover" style="display: none;">
+        <div class="book-leather-cover back-cover">
+          <div class="gold-corner top-right"></div>
+          <div class="gold-corner top-left"></div>
+          <div class="gold-corner bottom-right"></div>
+          <div class="gold-corner bottom-left"></div>
+
+          <div class="book-ornate-border">
+            <div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+              <div style="font-size: 2.8rem; filter: drop-shadow(0 0 18px #d4af37);">🛡️</div>
+              <h1 class="thuluth-cover-title" style="font-size: 3rem;">تم بحمد الله وتوفيقه</h1>
+              <p class="cover-sub-text" style="font-size: 1.3rem; color: #ffffff;">
+                خاتمة دراسة إنهاء عقد العمل في قانون الأعمال
+              </p>
+              
+              <div style="display: flex; flex-direction: column; gap: 0.7rem; text-align: right; background: rgba(0,0,0,0.5); border: 1.5px solid rgba(212,175,55,0.4); padding: 1.1rem 1.8rem; border-radius: 10px;">
+                <div style="display: flex; align-items: center; gap: 0.8rem; font-size: 1.05rem; color: #ffffff; font-weight: 600;">
+                  <span style="color: #10b981; font-weight: 900;">✓</span>
+                  <span>تم استيفاء كافة محاور المبحث الثاني من الفصل الخامس.</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.8rem; font-size: 1.05rem; color: #ffffff; font-weight: 600;">
+                  <span style="color: #10b981; font-weight: 900;">✓</span>
+                  <span>تأصيل قانوني دقيق لموازنة حقوق العامل ورب العمل في التشريع العراقي.</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.8rem; font-size: 1.05rem; color: #ffffff; font-weight: 600;">
+                  <span style="color: #10b981; font-weight: 900;">✓</span>
+                  <span>تطبيق ميداني على بيئة الأعمال في أربيل وبغداد.</span>
+                </div>
+              </div>
+
+              <div style="margin-top: 1rem; text-align: center;">
+                <span style="font-size: 0.92rem; color: #fce8a6; font-weight: 700;">إشراف وتوجيه:</span><br>
+                <span style="font-size: 1.2rem; color: #ffffff; font-weight: 800;">الأستاذة م.م. هالة رحمن (Ass.L. Hala Rahman)</span>
+              </div>
+
+              <button class="btn-open-book" id="reopenBookBtn" style="margin-top: 1.2rem;">
+                <span>↺ إعادة فتح الكتاب من البداية</span>
+              </button>
+            </div>
+
+            <div style="font-size: 0.9rem; color: rgba(212, 175, 55, 0.85); font-weight: 700;">
+              جميع الحقوق محفوظة © 2026 — كلية القانون / إدارة الأعمال
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Bottom Controls -->
+    <footer class="bottom-bar">
+      <div class="slide-dots" id="dotsContainer" style="visibility: hidden;">
+        <button class="slide-dot active" data-index="0"></button>
+        <button class="slide-dot" data-index="1"></button>
+        <button class="slide-dot" data-index="2"></button>
+        <button class="slide-dot" data-index="3"></button>
+        <button class="slide-dot" data-index="4"></button>
+        <button class="slide-dot" data-index="5"></button>
+      </div>
+
+      <div class="controls-group" id="controlsGroup" style="visibility: hidden;">
+        <button class="btn-control" id="resetCoverBtn" title="الرجوع لغلاف الكتاب">↺</button>
+        <button class="btn-control" id="prevBtn" title="طي الصفحة للخلف (السهم الأيمن)">❯</button>
+        <button class="btn-action-primary" id="playBtn" title="تصفح تلقائي">
+          <span id="playIcon">▶</span>
+          <span id="playText">تصفح تلقائي</span>
+        </button>
+        <button class="btn-control" id="nextBtn" title="طي الصفحة للأمام (السهم الأيسر أو مسافة)">❮</button>
+      </div>
+
+      <div class="keyboard-hint" id="statusHint">
+        <span>التنقل بالصفحات:</span>
+        <span class="key-cap">◀</span>
+        <span class="key-cap">▶</span>
+        <span class="key-cap">Space</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    let state = 'front';
+    let currentIndex = 0;
+    const total = 6;
+    let autoPlayInterval = null;
+
+    const frontCover = document.getElementById('frontCover');
+    const spreadContainer = document.getElementById('spreadContainer');
+    const backCover = document.getElementById('backCover');
+    const pages = document.querySelectorAll('.book-page-leaf');
+    const dots = document.querySelectorAll('.slide-dot');
+    const counter = document.getElementById('slideCounter');
+    const dotsContainer = document.getElementById('dotsContainer');
+    const controlsGroup = document.getElementById('controlsGroup');
+    const closeBookNavBtn = document.getElementById('closeBookNavBtn');
+
+    function openBook() {
+      state = 'reading';
+      frontCover.style.display = 'none';
+      backCover.style.display = 'none';
+      spreadContainer.style.display = 'block';
+      dotsContainer.style.visibility = 'visible';
+      controlsGroup.style.visibility = 'visible';
+      closeBookNavBtn.style.display = 'flex';
+      setPage(0);
+    }
+
+    function closeBook() {
+      state = 'back';
+      spreadContainer.style.display = 'none';
+      frontCover.style.display = 'none';
+      backCover.style.display = 'block';
+      dotsContainer.style.visibility = 'hidden';
+      controlsGroup.style.visibility = 'hidden';
+      closeBookNavBtn.style.display = 'none';
+      counter.textContent = 'خاتمة الكتاب';
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = null;
+        document.getElementById('playIcon').textContent = '▶';
+        document.getElementById('playText').textContent = 'تصفح تلقائي';
+      }
+    }
+
+    function resetToFront() {
+      state = 'front';
+      spreadContainer.style.display = 'none';
+      backCover.style.display = 'none';
+      frontCover.style.display = 'block';
+      dotsContainer.style.visibility = 'hidden';
+      controlsGroup.style.visibility = 'hidden';
+      closeBookNavBtn.style.display = 'none';
+      counter.textContent = 'غلاف الكتاب';
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = null;
+        document.getElementById('playIcon').textContent = '▶';
+        document.getElementById('playText').textContent = 'تصفح تلقائي';
+      }
+    }
+
+    function setPage(index) {
+      if (index >= total) {
+        closeBook();
+        return;
+      }
+      if (index < 0) {
+        resetToFront();
+        return;
+      }
+
+      currentIndex = index;
+
+      pages.forEach((p, idx) => {
+        p.classList.remove('active', 'turned-past');
+        if (idx === currentIndex) {
+          p.classList.add('active');
+        } else if (idx < currentIndex) {
+          p.classList.add('turned-past');
+        }
+      });
+
+      dots.forEach((d, idx) => {
+        if (idx === currentIndex) {
+          d.classList.add('active');
+        } else {
+          d.classList.remove('active');
+        }
+      });
+
+      counter.textContent = `0${currentIndex + 1} / 0${total}`;
+    }
+
+    document.getElementById('openBookBtn').addEventListener('click', openBook);
+    document.getElementById('reopenBookBtn').addEventListener('click', openBook);
+    document.getElementById('closeBookNavBtn').addEventListener('click', closeBook);
+    document.getElementById('resetCoverBtn').addEventListener('click', resetToFront);
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      setPage(currentIndex + 1);
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      setPage(currentIndex - 1);
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.getAttribute('data-index'));
+        setPage(idx);
+      });
+    });
+
+    // Keyboard events
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === ' ' || e.key === 'PageDown') {
+        if (state === 'front') openBook();
+        else if (state === 'reading') setPage(currentIndex + 1);
+      } else if (e.key === 'ArrowRight' || e.key === 'PageUp') {
+        if (state === 'back') openBook();
+        else if (state === 'reading') setPage(currentIndex - 1);
+      } else if (e.key === 'Home') {
+        resetToFront();
+      } else if (e.key === 'End') {
+        closeBook();
+      } else if (e.key.toLowerCase() === 'f') {
+        toggleFullscreen();
+      }
+    });
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(console.error);
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    }
+    document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
+
+    // Auto Play
+    const playBtn = document.getElementById('playBtn');
+    const playIcon = document.getElementById('playIcon');
+    const playText = document.getElementById('playText');
+
+    playBtn.addEventListener('click', () => {
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = null;
+        playIcon.textContent = '▶';
+        playText.textContent = 'تصفح تلقائي';
+      } else {
+        autoPlayInterval = setInterval(() => {
+          setPage(currentIndex + 1);
+        }, 7500);
+        playIcon.textContent = '⏸';
+        playText.textContent = 'إيقاف';
+      }
+    });
+  </script>
+</body>
+</html>

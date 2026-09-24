@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دليل وشرح تقرير قانون الأعمال الأكاديمي الشامل | إنهاء عقد العمل</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Aref+Ruqaa:wght@400;700&family=Gulzar&family=Alexandria:wght@300;400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #06090e;
+      --bg-card: rgba(16, 24, 40, 0.94);
+      --bg-card-border: rgba(212, 175, 55, 0.45);
+      --gold-primary: #d4af37;
+      --gold-bright: #fce8a6;
+      --gold-dark: #8c6710;
+      --gold-gradient: linear-gradient(135deg, #fff5d0 0%, #e6c66e 30%, #d4af37 60%, #997314 100%);
+      --gold-glow: rgba(212, 175, 55, 0.35);
+      --text-primary: #ffffff;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --font-thuluth: 'Gulzar', 'Amiri Quran', 'Aref Ruqaa', 'Traditional Arabic', serif;
+      --font-qomra: 'Qomra', 'Alexandria', 'Tajawal', 'Readex Pro', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-qomra);
+      background: radial-gradient(circle at 50% 8%, #182842 0%, #090e18 55%, #020406 100%);
+      color: var(--text-primary);
+      line-height: 1.8;
+      direction: rtl;
+      padding-bottom: 60px;
+      font-size: 1.12rem;
+    }
+
+    /* Ambient glow */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -10%;
+      left: 20%;
+      width: 60vw;
+      height: 50vh;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+      filter: blur(120px);
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 2.2rem 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Top Sticky Action Bar */
+    .sticky-top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8, 12, 20, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1.5px solid rgba(212, 175, 55, 0.35);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--gold-bright);
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-top {
+      padding: 0.55rem 1.4rem;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 800;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      cursor: pointer;
+      font-family: var(--font-qomra);
+    }
+
+    .btn-top.gold {
+      background: var(--gold-gradient);
+      color: #080c14;
+      border: none;
+      box-shadow: 0 4px 18px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-top.gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(212, 175, 55, 0.65);
+    }
+
+    .btn-top.outline {
+      background: rgba(212, 175, 55, 0.12);
+      border: 1.5px solid var(--gold-primary);
+      color: var(--gold-bright);
+    }
+
+    .btn-top.outline:hover {
+      background: rgba(212, 175, 55, 0.25);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Banner with Islamic Arabesque Framing */
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(22, 34, 56, 0.96) 0%, rgba(12, 18, 30, 0.98) 100%);
+      border: 2px solid rgba(212, 175, 55, 0.55);
+      border-radius: 22px;
+      padding: 3.5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75), 0 0 50px rgba(212, 175, 55, 0.25);
+      margin-bottom: 2.8rem;
+    }
+
+    /* Arabesque side decorative stripes */
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; right: 0;
+      width: 14px;
+      background: repeating-linear-gradient(to bottom, #d4af37, #d4af37 10px, transparent 10px, transparent 20px);
+      opacity: 0.6;
+    }
+
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; left: 0;
+      width: 14px;
+      background: repeating-linear-gradient(to bottom, #d4af37, #d4af37 10px, transparent 10px, transparent 20px);
+      opacity: 0.6;
+    }
+
+    .badge-course {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(212, 175, 55, 0.18);
+      border: 1.5px solid var(--gold-primary);
+      color: var(--gold-bright);
+      padding: 0.55rem 1.6rem;
+      border-radius: 9999px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 1.4rem;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+    }
+
+    .thuluth-title {
+      font-family: var(--font-thuluth);
+      font-size: 4rem;
+      line-height: 1.32;
+      font-weight: 700;
+      color: #fffdf5;
+      text-shadow: 0 4px 22px rgba(0, 0, 0, 0.9), 0 0 45px rgba(212, 175, 55, 0.55);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.45rem;
+      color: var(--gold-bright);
+      font-weight: 700;
+      max-width: 950px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    .metadata-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1.5px solid rgba(212, 175, 55, 0.4);
+      padding: 1.2rem 2.2rem;
+      border-radius: 14px;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .meta-label {
+      font-size: 0.95rem;
+      color: var(--gold-bright);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .meta-value {
+      font-size: 1.22rem;
+      color: #ffffff;
+      font-weight: 800;
+    }
+
+    /* Action Cards Grid */
+    .action-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.4rem;
+      margin-bottom: 3rem;
+    }
+
+    .action-card {
+      background: rgba(22, 34, 56, 0.92);
+      border: 1.5px solid rgba(212, 175, 55, 0.4);
+      border-radius: 16px;
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      color: #ffffff;
+      transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    }
+
+    .action-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold-bright);
+      background: rgba(30, 48, 80, 0.98);
+      box-shadow: 0 14px 40px rgba(212, 175, 55, 0.35);
+    }
+
+    .action-icon {
+      font-size: 2.6rem;
+      margin-bottom: 0.8rem;
+      filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.45));
+    }
+
+    .action-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--gold-bright);
+      margin-bottom: 0.5rem;
+    }
+
+    .action-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Section Styling */
+    .section-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--bg-card-border);
+      border-radius: 18px;
+      padding: 2.6rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.45);
+      position: relative;
+    }
+
+    .section-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 7px;
+      height: 100%;
+      background: var(--gold-gradient);
+      border-radius: 0 18px 18px 0;
+    }
+
+    .section-heading {
+      font-family: var(--font-thuluth);
+      font-size: 2.85rem;
+      color: #ffffff;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .section-heading span {
+      color: var(--gold-bright);
+    }
+
+    .lead-text {
+      font-size: 1.22rem;
+      color: var(--text-primary);
+      line-height: 1.85;
+      margin-bottom: 1.4rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.6rem;
+      margin-top: 1.4rem;
+    }
+
+    .sub-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1.5px solid rgba(212, 175, 55, 0.3);
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .sub-card:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: var(--gold-bright);
+      transform: translateY(-4px);
+    }
+
+    .sub-card-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--gold-bright);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sub-card p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    ul.feature-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    ul.feature-list li {
+      padding-right: 1.8rem;
+      position: relative;
+      margin-bottom: 0.8rem;
+      font-size: 1.12rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    ul.feature-list li::before {
+      content: '◀';
+      position: absolute;
+      right: 0;
+      color: var(--gold-primary);
+      font-size: 0.85rem;
+    }
+
+    /* Comparison Table */
+    .table-wrapper {
+      overflow-x: auto;
+      margin-top: 1.5rem;
+      border-radius: 14px;
+      border: 1.5px solid rgba(212, 175, 55, 0.4);
+    }
+
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1.05rem;
+      text-align: center;
+    }
+
+    .styled-table th {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.12) 100%);
+      color: var(--gold-bright);
+      padding: 1.2rem 1rem;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      font-weight: 800;
+      font-size: 1.15rem;
+    }
+
+    .styled-table td {
+      padding: 1.1rem 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+    }
+
+    .styled-table tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .styled-table tr:hover {
+      background: rgba(212, 175, 55, 0.06);
+    }
+
+    .badge-yes {
+      color: #34d399;
+      font-weight: 800;
+    }
+
+    .badge-no {
+      color: #f87171;
+      font-weight: 800;
+    }
+
+    .badge-cond {
+      color: #fbbf24;
+      font-weight: 800;
+    }
+
+    /* Slide Showcase Cards */
+    .slides-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .slide-preview-card {
+      background: rgba(18, 26, 44, 0.95);
+      border: 1.5px solid rgba(212, 175, 55, 0.35);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .slide-preview-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold-bright);
+      box-shadow: 0 16px 40px rgba(212, 175, 55, 0.3);
+    }
+
+    .slide-preview-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+    }
+
+    .slide-preview-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      flex-grow: 1;
+    }
+
+    .slide-preview-badge {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--gold-bright);
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold-primary);
+      padding: 0.3rem 0.9rem;
+      border-radius: 6px;
+      align-self: flex-start;
+    }
+
+    .slide-preview-title {
+      font-family: var(--font-thuluth);
+      font-size: 1.85rem;
+      color: #ffffff;
+      line-height: 1.35;
+    }
+
+    .slide-preview-ref {
+      font-size: 0.95rem;
+      color: var(--gold-bright);
+      font-weight: 700;
+      margin-top: auto;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Footer */
+    .page-footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.3);
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Quick Navigation Bar -->
+  <header class="sticky-top-bar">
+    <div class="brand-title">
+      <span>⚖️ دليل وشرح تقرير قانون الأعمال الأكاديمي</span>
+      <span style="font-size: 0.9rem; color: #94a3b8; font-weight: normal;">| المبحث الثاني من الفصل الخامس</span>
+    </div>
+
+    <div class="top-actions">
+      <a href="http://localhost:5173/" target="_blank" class="btn-top gold">
+        <span>🚀 تشغيل العرض 3D التفاعلي</span>
+      </a>
+      <a href="presentation_interactive.html" target="_blank" class="btn-top outline">
+        <span>📑 نسخة العرض المستقلة HTML</span>
+      </a>
+      <a href="report_business_law.html" target="_blank" class="btn-top outline">
+        <span>📄 التقرير الأكاديمي المطبوع</span>
+      </a>
+      <a href="تقرير_انهاء_عقد_العمل_6_صفحات.pdf" download class="btn-top gold">
+        <span>📥 تحميل PDF (6 صفحات)</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Executive Hero Banner -->
+    <div class="hero-banner">
+      <div class="badge-course">
+        <span>⚖️ مقرر قانون الأعمال (Business Law) — المبحث الثاني (ص 324 - 366)</span>
+      </div>
+
+      <h1 class="thuluth-title">
+        إنهاء عقد العمل بإرادة أحد طرفيه أو كليهما
+      </h1>
+
+      <p class="hero-subtitle">
+        دراسة تحليلية تأصيلية ومقارنة وفقاً لأحكام قانون العمل العراقي رقم (37) لسنة 2015 وكتاب د. عدنان العابد ود. يوسف إلياس
+      </p>
+
+      <div class="metadata-bar">
+        <div class="meta-item">
+          <span class="meta-label">المادة الأكاديمية:</span>
+          <span class="meta-value">قانون الأعمال (Business Law)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">إشراف وتدريس:</span>
+          <span class="meta-value">م.م. هالة رحمن (Ass.L. Hala Rahman)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">المرجع العلمي المعتمد:</span>
+          <span class="meta-value">د. عدنان العابد & د. يوسف إلياس</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">بيئة التوثيق:</span>
+          <span class="meta-value">أربيل / بغداد — 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Navigation Hub -->
+    <div class="action-links-grid">
+      <a href="http://localhost:5173/" target="_blank" class="action-card">
+        <div class="action-icon">📖</div>
+        <div class="action-title">العرض التقديمي 3D الحي</div>
+        <div class="action-desc">عرض تفاعلي بالتايب سكربت وFramer Motion بمحاكاة فتح كتاب جلدي فاخر وطيات صفحات ثلاثية الأبعاد.</div>
+      </a>
+
+      <a href="presentation_interactive.html" target="_blank" class="action-card">
+        <div class="action-icon">🖥️</div>
+        <div class="action-title">العرض المستقل (Offline)</div>
+        <div class="action-desc">ملف HTML مستقل كامل يعمل مباشرة عبر النقر المزدوج دون الحاجة لخادم إنترنت أو تثبيت حزم.</div>
+      </a>
+
+      <a href="report_business_law.html" target="_blank" class="action-card">
+        <div class="action-icon">📜</div>
+        <div class="action-title">التقرير الأكاديمي المطبوع</div>
+        <div class="action-desc">الوثيقة الأكاديمية الكاملة من 6 صفحات A4 مجهزة للطباعة والحفظ والتداول الجامعي.</div>
+      </a>
+
+      <a href="تقرير_انهاء_عقد_العمل_6_صفحات.pdf" download class="action-card">
+        <div class="action-icon">📥</div>
+        <div class="action-title">تحميل التقرير PDF</div>
+        <div class="action-desc">نسخة PDF رقمية معتمدة مخرجة بأعلى درجات الدقة والجمالية وفق المواصفات الأكاديمية.</div>
+      </a>
+    </div>
+
+    <!-- Section 1: Introduction & Academic Framework -->
+    <div class="section-card">
+      <h2 class="section-heading">
+        <span>❖</span> مدخل دراسي وتأصيل تشريعي عام
+      </h2>
+      <p class="lead-text">
+        يُعد عقد العمل من أهم العقود الرضائية والمعاوضة التي تحكم عصب الاقتصاد والاستثمار؛ واستناداً إلى المبحث الثاني من الفصل الخامس في كتاب <strong>"قانون العمل"</strong> المعتمد في كلية القانون والمعاهد الإدارية من تأليف <strong>الدكتور عدنان العابد والدكتور يوسف إلياس</strong> (الصفحات 324 إلى 366)، ينقسم إنهاء عقد العمل إلى أربعة محاور جوهرية تعكس التوازن الدقيق بين حماية العامل وصون استقرار المشروع الاستثماري.
+      </p>
+
+      <div class="card-grid">
+        <div class="sub-card">
+          <div class="sub-card-title">⚖️ فلسفة التشريع العمالي</div>
+          <p>
+            تستند قواعد إنهاء عقد العمل إلى الموازنة بين مصلحتين: مصلحة صاحب العمل في إدارة مشروعه وحرية الاستثمار، ومصلحة العامل في الأمان الوظيفي ومنع الطرد التعسفي الذي يهدد معيشته اليومية.
+          </p>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card-title">🏛️ النظام العام الحمائي</div>
+          <p>
+            تعتبر معظم قواعد قانون العمل من النظام العام، فلا يجوز الاتفاق على ما يخالفها إلا إذا كان ذلك يمثل مصلحة وفائدة أفضل للعامل، ويبطل كل تنازل عن حقوقه الأساسية.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Detailed Breakdown of the 4 Legal Axes -->
+    <div class="section-card">
+      <h2 class="section-heading">
+        <span>❖</span> تفصيل المحاور القانونية الأربعة للمبحث الثاني
+      </h2>
+
+      <!-- Axis 1 -->
+      <div style="margin-bottom: 2.2rem;">
+        <h3 style="color: #6ee7b7; font-size: 1.6rem; margin-bottom: 0.8rem; font-weight: 800;">
+          أولاً: انتهاء العقد باتفاق إرادتي طرفيه (التقايل الرضائي - ص 324)
+        </h3>
+        <p class="lead-text">
+          تطبيقاً للقاعدة العامة «العقد شريعة المتعاقدين»، فإن الرابطة التي نشأت بتوافق الإرادتين يجوز أن تنحل باتفاقهما المتبادل، وهو ما يعرف قانوناً بـ (التقايل أو التفاسخ الرضائي - Mutual Termination).
+        </p>
+        <ul class="feature-list">
+          <li><strong>حرية الرضا وسلامته:</strong> يشترط القانون أن تصدر إرادة العامل عن اختيار حر دون إكراه مادي أو معنوي من صاحب العمل.</li>
+          <li><strong>بطلان إسقاط الحقوق الآمرة:</strong> لا يجوز أن يتضمن اتفاق التقايل التنازل عن مكافأة نهاية الخدمة أو بدلات الإجازات المستحقة نظاماً.</li>
+          <li><strong>التوثيق الخطي الرسمي:</strong> ضرورة تحرير مخالصة كتابية معتمدة ومختومة تجنباً لأي نزاع قضائي لاحق.</li>
+          <li><strong>شهادة الخدمة وبراءة الذمة:</strong> التزام صاحب العمل بتسليم العامل براءة ذمة فورية وشهادة خدمة رسمية مجانية دون قيد أو شرط.</li>
+        </ul>
+      </div>
+
+      <!-- Axis 2 -->
+      <div style="margin-bottom: 2.2rem;">
+        <h3 style="color: #93c5fd; font-size: 1.6rem; margin-bottom: 0.8rem; font-weight: 800;">
+          ثانياً: إنهاء العقد بالإرادة المنفردة للعامل (الاستقالة والترك - ص 328)
+        </h3>
+        <p class="lead-text">
+          حظر المشرع السخرة والعمل القسري، وأقر حق العامل في إنهاء العقد غير محدد المدة بإرادته المنفردة، لكنه وضع ضوابط وقائية لحماية استمرار الإنتاج.
+        </p>
+        <ul class="feature-list">
+          <li><strong>مهلة الإخطار القانونية (30 يوماً):</strong> التزام العامل بتقديم إخطار كتابي مسبق لصاحب العمل قبل شهر من موعد المغادرة الفعلي.</li>
+          <li><strong>الاستمرار في أداء العمل:</strong> يلتزم العامل بأداء واجباته المهنية طوال سريان مهلة الإخطار مقابل تقاضي كامل راتبه ومستحقاته.</li>
+          <li><strong>الترك الفوري المشروع دون إخطار:</strong> يحق للعامل مغادرة العمل فوراً مع احتفاظه بكامل حقوقه ومكافأته في حالات: اعتداء صاحب العمل أو ممثله عليه، التخلف عن صرف الأجر، أو وجود خطر داهم يهدد السلامة المهنية.</li>
+        </ul>
+      </div>
+
+      <!-- Axis 3 -->
+      <div style="margin-bottom: 2.2rem;">
+        <h3 style="color: #fcd34d; font-size: 1.6rem; margin-bottom: 0.8rem; font-weight: 800;">
+          ثالثاً: إنهاء العقد بإرادة صاحب العمل والفصل التعسفي (ص 334)
+        </h3>
+        <p class="lead-text">
+          قيد المشرع سلطة صاحب العمل في إنهاء العقود منعاً للطرد الكيدي والتعسف الاقتصادي بحق الأسر العمالية.
+        </p>
+        <ul class="feature-list">
+          <li><strong>حصرية الأسباب المشروعة:</strong> لا يجوز الإنهاء إلا لأسباب جدية كإعادة الهيكلة المعتمدة، عدم الكفاءة المثبتة بالتقارير، أو بلوغ السن القانونية للتقاعد.</li>
+          <li><strong>حظر الفصل التمييزي أو النقابي:</strong> يُعد باطلاً وكيدياً كل فصل يرتبط بممارسة العمل النقابي أو تقديم شكوى قانونية ضد صاحب العمل.</li>
+          <li><strong>سلطة محكمة العمل في الإعادة:</strong> تملك محكمة العمل صلاحية الحكم بإلغاء قرار الفصل وإعادة العامل لوظيفته مع صرف كامل أجوره السابقة.</li>
+          <li><strong>التعويض الجابر للضرر:</strong> إذا استحال تنفيذ الإعادة، يُلزم صاحب العمل بدفع تعويض مالي عادل إضافة لمكافأة الخدمة وبدل مهلة الإنذار.</li>
+        </ul>
+      </div>
+
+      <!-- Axis 4 -->
+      <div>
+        <h3 style="color: #f87171; font-size: 1.6rem; margin-bottom: 0.8rem; font-weight: 800;">
+          رابعاً: الفصل التأديبي لارتكاب الخطأ الجسيم (ص 346)
+        </h3>
+        <p class="lead-text">
+          يمثل الفصل التأديبي أقصى عقوبة انضباطية تسقط مهلة الإخطار ومكافأة نهاية الخدمة، لذا حصر القانون أسبابه في الخطأ الجسيم الخاضع للرقابة القضائية الصارمة.
+        </p>
+        <ul class="feature-list">
+          <li><strong>الضرر المادي الفادح:</strong> إتلاف منشآت أو آلات صاحب العمل عمداً، مع اشتراط إبلاغ الشرطة بالواقعة خلال 24-48 ساعة.</li>
+          <li><strong>إفشاء الأسرار المهنية:</strong> تسريب أسرار التصنيع أو الصفقات التجارية بما يلحق بالمشروع ضرراً بالغاً.</li>
+          <li><strong>التغيب غير المبرر:</strong> الانقطاع عن العمل دون إذن لمدة تزيد عن المدة القانونية (مثلاً 10 أيام متصلة أو 20 يوماً متقطعة خلال السنة) بعد توجيه إنذار مسجل.</li>
+          <li><strong>الضمانات الإجرائية الجوهرية:</strong> إلزامية التحقيق الخطي مع العامل، سماع دفاعه، وتوثيق المحضر ليكون خاضعاً لرقابة محكمة العمل.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Section 3: Comparative Legal Matrix -->
+    <div class="section-card">
+      <h2 class="section-heading">
+        <span>❖</span> جدول المقارنة التشريعية الشاملة
+      </h2>
+      <p class="lead-text">
+        يلخص الجدول التالي الفروق القانونية والإجرائية والمالية الدقيقة بين حالات إنهاء عقد العمل الأربع:
+      </p>
+
+      <div class="table-wrapper">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>وجه المقارنة</th>
+              <th>التقايل الرضائي (أولاً)</th>
+              <th>استقالة العامل (ثانياً)</th>
+              <th>إنهاء صاحب العمل (ثالثاً)</th>
+              <th>الفصل التأديبي (رابعاً)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>مصدر الإرادة</strong></td>
+              <td>تطابق إرادتي الطرفين معاً</td>
+              <td>الإرادة المنفردة للعامل</td>
+              <td>الإرادة المنفردة لصاحب العمل</td>
+              <td>قرار انضباطي جزائي من الإدارة</td>
+            </tr>
+            <tr>
+              <td><strong>مهلة الإخطار (الإنذار)</strong></td>
+              <td><span class="badge-cond">حسب الاتفاق المكتوب</span></td>
+              <td><span class="badge-yes">ملزمة (30 يوماً غالباً)</span></td>
+              <td><span class="badge-yes">إلزامية ومقيدة قانوناً</span></td>
+              <td><span class="badge-no">تسقط فوراً لخطورة الفعل</span></td>
+            </tr>
+            <tr>
+              <td><strong>مكافأة نهاية الخدمة</strong></td>
+              <td><span class="badge-yes">مستحقة بالكامل دون إنقاص</span></td>
+              <td><span class="badge-cond">مستحقة وفق سنوات الخدمة</span></td>
+              <td><span class="badge-yes">مستحقة كاملة + تعويض التعسف</span></td>
+              <td><span class="badge-no">قد يُحرم منها أو من جزء منها</span></td>
+            </tr>
+            <tr>
+              <td><strong>التعويض المالي الإضافي</strong></td>
+              <td><span class="badge-no">لا يوجد تعويض لرضائهما</span></td>
+              <td><span class="badge-no">لا يوجد (إلا في الترك المبرر)</span></td>
+              <td><span class="badge-yes">مستحق إذا ثبت التعسف الكيدي</span></td>
+              <td><span class="badge-cond">يحق للمنشأة طلب تعويض الضرر</span></td>
+            </tr>
+            <tr>
+              <td><strong>الرقابة القضائية</strong></td>
+              <td>التحقق من خلو الرضا من العيوب</td>
+              <td>التأكد من حرية الاستقالة وعدم الإكراه</td>
+              <td>فحص مشروعية وجدية سبب الإنهاء</td>
+              <td>التحقق من الخطأ الجسيم وضمان الدفاع</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 4: Visual Showcase of the 6 Slides & Erbil Landmarks -->
+    <div class="section-card">
+      <h2 class="section-heading">
+        <span>❖</span> استعراض محتوى الشرائح الست ومعالم أربيل المعتمدة
+      </h2>
+      <p class="lead-text">
+        تم ربط محاور الدراسة بصور توثيقية فائقة الجودة تخلو تماماً من الأشخاص والأعلام، وتبرز معالم مدينة أربيل ومكاتب المحاماة الفاخرة:
+      </p>
+
+      <div class="slides-preview-grid">
+        <!-- Slide 1 -->
+        <div class="slide-preview-card">
+          <img src="images/erbil_cover_desk_1790243136096.jpg" alt="قلعة أربيل ومكتب المحاماة الفاخر" class="slide-preview-img">
+          <div class="slide-preview-body">
+            <span class="slide-preview-badge">الشريحة 01 — الغلاف</span>
+            <div class="slide-preview-title">إنهاء عقد العمل بإرادة أحد طرفيه أو كليهما</div>
+            <p style="color: #cbd5e1; font-size: 1.05rem;">مقرر قانون الأعمال بإشراف م.م. هالة رحمن، تأصيل المبحث الثاني من كتاب د. عدنان العابد ود. يوسف إلياس مع إطلالة قلعة أربيل عند الغروب.</p>
+            <div class="slide-preview-ref">كتاب قانون العمل (ص 324 - 366) | جامعة بغداد</div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide-preview-card">
+          <img src="images/erbil_mutual_contract_1790243165923.jpg" alt="عقود موثقة وإطلالة فندق ديفان أربيل" class="slide-preview-img">
+          <div class="slide-preview-body">
+            <span class="slide-preview-badge">الشريحة 02 — المبحث 2 أولاً</span>
+            <div class="slide-preview-title">التقايل الرضائي وانحلال العقد بالتراضي</div>
+            <p style="color: #cbd5e1; font-size: 1.05rem;">تسوية عمالية موثقة وخاتم شمعي أحمر على مكتب ماهوجني يطل على فندق ديفان أربيل وأبراج شارع كولان الحديثة.</p>
+            <div class="slide-preview-ref">المادة (324 وما بعدها) | التقايل الرضائي وحماية الطرف الأضعف</div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide-preview-card">
+          <img src="images/erbil_resignation_desk_1790243200256.jpg" alt="استقالة العامل وأفق أربيل" class="slide-preview-img">
+          <div class="slide-preview-body">
+            <span class="slide-preview-badge">الشريحة 03 — المبحث 2 ثانياً</span>
+            <div class="slide-preview-title">إنهاء العقد بالإرادة المنفردة للعامل (الاستقالة)</div>
+            <p style="color: #cbd5e1; font-size: 1.05rem;">وثيقة استقالة رسمية مختومة وساعة مكتب كلاسيكية ترمز لمهلة الإخطار (30 يوماً) مع إطلالة أفق أربيل وقلعتها.</p>
+            <div class="slide-preview-ref">المادة (328 وما بعدها) | الاستقالة والترك الفوري المشروع</div>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide-preview-card">
+          <img src="images/erbil_employer_termination_1790243235199.jpg" alt="قاعة اجتماعات وتدقيق قرارات الإدارة" class="slide-preview-img">
+          <div class="slide-preview-body">
+            <span class="slide-preview-badge">الشريحة 04 — المبحث 2 ثالثاً</span>
+            <div class="slide-preview-title">إنهاء صاحب العمل والفصل التعسفي</div>
+            <p style="color: #cbd5e1; font-size: 1.05rem;">ملف إداري مدقق وقاعة اجتماعات تنفيذية راقية تطل على المعمار الحديث لمدينة أربيل تجسيداً لضوابط إنهاء الإدارة.</p>
+            <div class="slide-preview-ref">المادة (334 وما بعدها) | قيود الإنهاء ورقابة التعسف</div>
+          </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide-preview-card">
+          <img src="images/erbil_disciplinary_gavel_1790243270695.jpg" alt="ميزان العدالة ومطرقة محكمة العمل بأربيل" class="slide-preview-img">
+          <div class="slide-preview-body">
+            <span class="slide-preview-badge">الشريحة 05 — المبحث 2 رابعاً</span>
+            <div class="slide-preview-title">الفصل التأديبي لارتكاب الخطأ الجسيم</div>
+            <p style="color: #cbd5e1; font-size: 1.05rem;">مطرقة القضاء الخشبية وميزان العدالة البرونزي على منصة محكمة العمل مع إطلالة قلعة أربيل، ترمز لسلطة الرقابة القضائية.</p>
+            <div class="slide-preview-ref">المادة (346 وما بعدها) | الخطأ الجسيم وحق الدفاع والتحقيق</div>
+          </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="slide-preview-card">
+          <img src="images/erbil_library_comparison_1790243302843.jpg" alt="المكتبة القانونية الكلاسيكية وإطلالة قلعة أربيل" class="slide-preview-img">
+          <div class="slide-preview-body">
+            <span class="slide-preview-badge">الشريحة 06 — الخلاصة والتوصيات</span>
+            <div class="slide-preview-title">المقارنة التشريعية الشاملة والتوصيات</div>
+            <p style="color: #cbd5e1; font-size: 1.05rem;">مكتبة قانونية كلاسيكية فخمة بمجلدات جلدية مذهبة ومصباح قراءة أخضر يطل على قلعة أربيل تجسيداً للبحث الأكاديمي الرصين.</p>
+            <div class="slide-preview-ref">دراسة مقارنة | كتاب د. عدنان العابد ود. يوسف إلياس (بغداد)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 5: Technical Capabilities & Presentation Controls -->
+    <div class="section-card">
+      <h2 class="section-heading">
+        <span>❖</span> المواصفات التقنية وطريقة التحكم بالعرض
+      </h2>
+      <p class="lead-text">
+        تم بناء هذا المشروع بأحدث تقنيات الويب الحديثة (React 19 + TypeScript + Vite + Framer Motion) مع تجربة بصرية تحاكي تصفح كتاب جلدي فاخر:
+      </p>
+
+      <div class="card-grid">
+        <div class="sub-card">
+          <div class="sub-card-title">📖 محاكاة الكتاب ثلاثي الأبعاد</div>
+          <p>
+            يفتح غلاف الكتاب الجلدي بزاوية دوران ثلاثية الأبعاد (3D Perspective)، وتطوى الصفحات بانحناء فيزيائي واقعي (Page Fold Transition) مع صوت طي وخط انثناء وملمس حواف مذهبة، وعند الوصول للنهاية يغلق الغلاف الخلفي بختم رسمي.
+          </p>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card-title">⌨️ اختصارات لوحة المفاتيح</div>
+          <ul class="feature-list" style="margin-top: 0;">
+            <li><strong>مسافة (Space) أو سهم يسار (◀):</strong> الانتقال للشريحة التالية وطي الصفحة.</li>
+            <li><strong>سهم يمين (▶):</strong> الرجوع للشريحة السابقة.</li>
+            <li><strong>زر (Home):</strong> العودة إلى بداية التقرير.</li>
+            <li><strong>زر (End):</strong> الانتقال لغلاف الإغلاق النهائي.</li>
+            <li><strong>حرف (F):</strong> التبديل بين وضع ملء الشاشة الكامل والوضع العادي.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+      <p>تم إعداد هذا الدليل الشامل لتوثيق وتأصيل متطلبات مادة قانون الأعمال (Business Law) بإشراف الأستاذة: م.م. هالة رحمن (Ass.L. Hala Rahman)</p>
+      <p style="margin-top: 8px; color: var(--gold-bright); font-weight: 700;">العام الأكاديمي 2026 — كلية القانون / إدارة الأعمال | جمهورية العراق</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

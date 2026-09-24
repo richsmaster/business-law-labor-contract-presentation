@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقرير قانون الأعمال: إنهاء عقد العمل بإرادة أحد طرفيه أو كليهما</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2a3a;
+            --primary-light: #2c4257;
+            --gold: #c59b27;
+            --gold-light: #dfb743;
+            --gold-bg: #fdfaf0;
+            --accent-red: #8b1e1e;
+            --text-dark: #1e293b;
+            --text-muted: #475569;
+            --border-color: #cbd5e1;
+            --bg-page: #ffffff;
+            --bg-body: #eceff3;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top control bar */
+        .no-print-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--primary), #0f172a);
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .bar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bar-badge {
+            background: var(--gold);
+            color: #1a202c;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, var(--gold), #b38618);
+            color: #1a202c;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-print:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(197, 155, 39, 0.4);
+            background: #e5b22b;
+        }
+
+        /* Pages Container */
+        .pages-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 0;
+            gap: 35px;
+        }
+
+        /* Individual A4 Page */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            height: 297mm;
+            background: var(--bg-page);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            padding: 16mm 18mm 14mm 18mm;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        /* Running Header & Footer */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .header-title {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .header-course {
+            color: var(--gold);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .page-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 6px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .page-number-box {
+            background: var(--primary);
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        /* Main Content Box */
+        .page-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Typography & Headings */
+        h1, h2, h3, h4 {
+            font-family: 'Cairo', sans-serif;
+            color: var(--primary);
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--gold-bg);
+            border-right: 4px solid var(--gold);
+            color: #875c00;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            margin-bottom: 6px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: "§";
+            color: var(--gold);
+            font-size: 1.35rem;
+            font-weight: 900;
+        }
+
+        .sub-title {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin: 7px 0 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .sub-title::before {
+            content: "◀";
+            color: var(--gold);
+            font-size: 0.7rem;
+        }
+
+        p, li {
+            font-size: 0.86rem;
+            color: #27303f;
+            text-align: justify;
+            margin-bottom: 6px;
+            line-height: 1.55;
+        }
+
+        ul {
+            padding-right: 18px;
+            margin-bottom: 8px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Highlight box */
+        .legal-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-right: 4px solid var(--primary);
+            border-radius: 4px;
+            padding: 8px 12px;
+            margin: 8px 0;
+        }
+
+        .legal-box.gold {
+            background: var(--gold-bg);
+            border-color: #f1dfa8;
+            border-right-color: var(--gold);
+        }
+
+        .legal-box.red {
+            background: #fef2f2;
+            border-color: #fecaca;
+            border-right-color: var(--accent-red);
+        }
+
+        .legal-box-title {
+            font-weight: 800;
+            font-size: 0.84rem;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* Image Display Box */
+        .image-frame {
+            margin: 8px 0;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-caption {
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* Cover Page Specific Styling */
+        .cover-page {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 22mm 20mm;
+            background: radial-gradient(circle at top right, #fafbfc 0%, #ffffff 100%);
+            border: 8px double #1a2a3a;
+        }
+
+        .cover-univ-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 12px;
+        }
+
+        .cover-univ-text {
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.4;
+        }
+
+        .cover-course-badge {
+            background: var(--primary);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 800;
+            font-size: 0.95rem;
+            border: 1px solid var(--gold);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .cover-main-box {
+            margin: 20px 0;
+        }
+
+        .cover-pre-title {
+            font-size: 1rem;
+            color: var(--gold);
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .cover-title {
+            font-size: 2.1rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1.35;
+            margin-bottom: 12px;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .cover-subtitle {
+            font-size: 1.05rem;
+            color: #475569;
+            font-weight: 600;
+            max-width: 85%;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .cover-image-container {
+            width: 90%;
+            margin: 15px auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+            border: 2px solid var(--gold);
+        }
+
+        .cover-image-container img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cover-meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+            text-align: right;
+            background: #f8fafc;
+            padding: 14px 18px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            border-top: 3px solid var(--gold);
+        }
+
+        .meta-card h4 {
+            font-size: 0.82rem;
+            color: var(--gold);
+            font-weight: 800;
+            margin-bottom: 3px;
+        }
+
+        .meta-card p {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .meta-card span {
+            font-size: 0.78rem;
+            color: #64748b;
+            display: block;
+        }
+
+        /* Comparison Table on Page 6 */
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 0.78rem;
+        }
+
+        .comp-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            padding: 6px 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .comp-table td {
+            padding: 5px 7px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .comp-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .comp-table tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .tag-yes {
+            color: #15803d;
+            font-weight: 700;
+        }
+
+        .tag-no {
+            color: #b91c1c;
+            font-weight: 700;
+        }
+
+        .tag-cond {
+            color: #b45309;
+            font-weight: 700;
+        }
+
+        /* Print Media Styles */
+        @media print {
+            body {
+                background: white;
+                margin: 0;
+                padding: 0;
+            }
+
+            .no-print-bar {
+                display: none !important;
+            }
+
+            .pages-container {
+                padding: 0;
+                gap: 0;
+            }
+
+            .page {
+                width: 210mm !important;
+                height: 297mm !important;
+                min-height: 297mm !important;
+                max-height: 297mm !important;
+                margin: 0 !important;
+                padding: 14mm 16mm 12mm 16mm !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                page-break-after: always !important;
+                page-break-inside: avoid !important;
+            }
+
+            .cover-page {
+                border: 6px double #1a2a3a !important;
+                height: 297mm !important;
+            }
+
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Navigation / Action Bar (Screen Only) -->
+    <div class="no-print-bar">
+        <div class="bar-title">
+            <span>⚖️ تقرير قانون الأعمال الأكاديمي (Business Law)</span>
+            <span class="bar-badge">وثيقة معتمدة من 6 صفحات كاملة</span>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+            <a href="http://localhost:5173/" target="_blank" style="background: rgba(212, 175, 55, 0.2); border: 1px solid var(--gold); color: #fff; padding: 6px 14px; border-radius: 6px; font-weight: 700; font-size: 0.88rem; text-decoration: none;">
+                <span>🚀 العرض التقديمي 3D</span>
+            </a>
+            <a href="دليل_شرح_التقرير_الشامل.html" target="_blank" style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(212, 175, 55, 0.4); color: var(--gold-light); padding: 6px 14px; border-radius: 6px; font-weight: 700; font-size: 0.88rem; text-decoration: none;">
+                <span>📖 شرح التقرير الشامل</span>
+            </a>
+            <span style="font-size: 0.85rem; color: #cbd5e1;">إشراف: م.م. هالة رحمن</span>
+            <button class="btn-print" onclick="window.print()">
+                <span>🖨️ طباعة التقرير / حفظ PDF</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="pages-container">
+
+        <!-- ========================================== -->
+        <!-- الصفحة 1: غلاف التقرير الأكاديمي الفاخر -->
+        <!-- ========================================== -->
+        <div class="page cover-page">
+            <div class="cover-univ-header">
+                <div class="cover-univ-text" style="text-align: right;">
+                    جمهورية العراق<br>
+                    وزارة التعليم العالي والبحث العلمي<br>
+                    كلية القانون / إدارة الأعمال
+                </div>
+                <div>
+                    <div class="cover-course-badge">Business Law | قانون الأعمال</div>
+                </div>
+                <div class="cover-univ-text" style="text-align: left;" dir="ltr">
+                    Academic Year: 2026<br>
+                    Labor Law Studies<br>
+                    Course Assignment
+                </div>
+            </div>
+
+            <div class="cover-main-box">
+                <div class="cover-pre-title">تقرير دراسي متخصص في التشريع العمالي المقارن</div>
+                <h1 class="cover-title">
+                    إنهاء عقد العمل<br>
+                    بإرادة أحد طرفيه أو كليهما
+                </h1>
+                <p class="cover-subtitle">
+                    دراسة تحليلية تأصيلية ومقارنة وفقاً لأحكام قانون العمل العراقي رقم (37) لسنة 2015 والفقه القانوني لأستاذة المادة
+                </p>
+            </div>
+
+            <div class="cover-image-container">
+                <img src="images/erbil_cover_desk_1790243136096.jpg" alt="غلاف دراسات قانون العمل وإطلالة قلعة أربيل">
+            </div>
+
+            <div class="cover-meta-grid">
+                <div class="meta-card">
+                    <h4>المادة الأكاديمية والمشرف:</h4>
+                    <p>قانون الأعمال (Business Law)</p>
+                    <span>إشراف الأستاذة: م.م. هالة رحمن (Ass.L. Hala Rahman)</span>
+                </div>
+                <div class="meta-card">
+                    <h4>المرجع والمنهج المعتمد:</h4>
+                    <p>كتاب قانون العمل (ص 324 - 366)</p>
+                    <span>تأليف: د. عدنان العابد & د. يوسف إلياس (جامعة بغداد)</span>
+                </div>
+                <div class="meta-card">
+                    <h4>المبحث المستهدف بالدراسة:</h4>
+                    <p>الفصل الخامس / المبحث الثاني</p>
+                    <span>إنهاء العقد بالإرادة المنفردة والاتفاق المشترك والجزاء التأديبي</span>
+                </div>
+                <div class="meta-card">
+                    <h4>إعداد الطالب والصفة:</h4>
+                    <p>بحث دراسي تحليلي مقدم لنيل التقييم الفصلي</p>
+                    <span>التخصص: قانون / إدارة أعمال - العام الجامعي 2026</span>
+                </div>
+            </div>
+
+            <div class="page-footer" style="border: none; justify-content: center;">
+                <span style="font-size: 0.72rem; color: #64748b;">جميع الحقوق القانونية والأكاديمية محفوظة © 2026</span>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- الصفحة 2: التقايل الرضائي لإنهاء العقد -->
+        <!-- ========================================== -->
+        <div class="page">
+            <div class="page-header">
+                <span class="header-title">إنهاء عقد العمل بإرادة أحد طرفيه أو كليهما</span>
+                <span class="header-course">Business Law | إشراف: م.م. هالة رحمن</span>
+            </div>
+
+            <div class="page-content">
+                <div class="section-badge">المبحث الثاني - أولاً (ص 324 وما بعدها)</div>
+                <h2 class="section-title">انتهاء العقد باتفاق إرادتي طرفيه (التقايل الرضائي)</h2>
+
+                <p>
+                    يُعد عقد العمل من عقود المعاوضة الرضائية التي تقوم على التراضي المتبادل؛ واستناداً إلى القاعدة الفقهية العامة <strong>"العقد شريعة المتعاقدين"</strong>، فإن الرابطة التي تنشأ بإرادة الطرفين المشتركة يجوز أن تنحل باتفاقهما المتبادل، وهو ما يعرف في الاصطلاح القانوني بـ <strong>(التقايل أو التفاسخ الرضائي - Mutual Agreement Termination)</strong>. وقد كرس المشرع في قانون العمل هذا المبدأ باعتباره تجسيداً لحرية التعاقد وسلطان الإرادة طالما لم يمس النظام العام الحمائي.
+                </p>
+
+                <div class="image-frame">
+                    <img src="images/erbil_mutual_contract_1790243165923.jpg" alt="التقايل الرضائي وعقود العمل الموثقة — إطلالة فندق ديفان أربيل">
+                    <div class="image-caption">الشكل (1): التقايل الرضائي والاتفاق المتبادل بين العامل وصاحب العمل على تسوية الحقوق — إطلالة فندق ديفان أربيل</div>
+                </div>
+
+                <h3 class="sub-title">1. الشروط الموضوعية والشكلية لصحة التقايل</h3>
+                <p>
+                    لكي يُنتج الاتفاق الرضائي على إنهاء العقد أثره القانوني المبرئ للذمة ودون إمكانية الطعن فيه، يشترط الفقه القانوني (وفق مؤلف د. عدنان العابد ود. يوسف إلياس) تحقق المتطلبات التالية:
+                </p>
+                <ul>
+                    <li><strong>التراضي الخالي من العيوب:</strong> يجب أن تصدر إرادة العامل عن بينة واختيار حر، دون وقوعه تحت تأثير الإكراه المادي أو المعنوي، أو التدليس والتغرير من قبل صاحب العمل للتخلص منه.</li>
+                    <li><strong>الأهلية القانونية للتعاقد:</strong> تمتع الطرفين بأهلية التصرف وإسقاط الالتزامات وقت إبرام اتفاق الإنهاء.</li>
+                    <li><strong>الشكلية والتوثيق الكتابي:</strong> يشترط قانون العمل أن يثبت اتفاق الإنهاء كتابة، منعاً للمنازعات وحماية للطرف الأضعف في العلاقة العقدية.</li>
+                </ul>
+
+                <h3 class="sub-title">2. الحماية القانونية للعامل من التقايل الصوري</h3>
+                <p>
+                    نظراً لاحتمال استغلال صاحب العمل نفوذه الاقتصادي لحمل العامل على توقيع استقالة مسبقة أو تنازل إجباري يرتدي ثوب "التقايل الرضائي"، وضع المشرع العمالي قيوداً صارمة:
+                </p>
+
+                <div class="legal-box gold">
+                    <div class="legal-box-title">⚖️ قاعدة بطلان التنازل عن الحقوق العمالية (النظام العام):</div>
+                    <p style="margin: 0; font-size: 0.83rem;">
+                        تنص القواعد الآمرة في قانون العمل على <strong>بطلان كل مصالحة أو إبراء أو تنازل</strong> يجريه العامل عن أي حق من حقوقه المقررة قانوناً (مثل مكافأة نهاية الخدمة، بدلات الإجازات المتراكمة، أو أجور العمل الإضافي)، إذا وقع هذا التنازل أثناء قيام العقد أو بمناسبة إنهائه، ما لم يكن الاتفاق يتضمن مزايا وشروطاً أصلح للعامل من الحد الأدنى القانوني.
+                    </p>
+                </div>
+
+                <h3 class="sub-title">3. الآثار المترتبة على إنهاء العقد بالاتفاق</h3>
+                <p>
+                    يترتب على تمام التقايل الصحيح انقضاء التزامات الطرفين للمستقبل، وتصفية المستحقات المالية للعامل فوراً، مع التزام صاحب العمل بتسليم العامل شهادة نهاية الخدمة وخلو الطرف، وإعادة أوراقه ومستنداته المودعة لدى المنشأة دون أي رسوم أو قيد.
+                </p>
+            </div>
+
+            <div class="page-footer">
+                <span>كتاب قانون العمل - د. عدنان العابد & د. يوسف إلياس | الفصل الخامس: انتهاء عقد العمل</span>
+                <span class="page-number-box">صفحة 2 من 6</span>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- الصفحة 3: إنهاء العقد بالإرادة المنفردة للعامل -->
+        <!-- ========================================== -->
+        <div class="page">
+            <div class="page-header">
+                <span class="header-title">إنهاء عقد العمل بإرادة أحد طرفيه أو كليهما</span>
+                <span class="header-course">Business Law | إشراف: م.م. هالة رحمن</span>
+            </div>
+
+            <div class="page-content">
+                <div class="section-badge">المبحث الثاني - ثانياً (ص 328 وما بعدها)</div>
+                <h2 class="section-title">إنهاء العقد بالإرادة المنفردة للعامل (الاستقالة والترك المشروع)</h2>
+
+                <p>
+                    أقر التشريع العمالي الحديث مبدأ حرية العمل كأحد الحقوق الدستورية الأصيلة، ومن ثم حظر إجبار العامل على الاستمرار في عمل لا يرغب فيه تأكيداً لتحريم العمل القسري (Forced Labour). وبناءً عليه، يملك العامل رخصة إنهاء العقد بإرادته المنفردة سواء عبر <strong>الاستقالة النظامية</strong>، أو من خلال <strong>الترك الفوري المشروع</strong> نتيجة إخلال صاحب العمل بالتزاماته.
+                </p>
+
+                <div class="image-frame">
+                    <img src="images/erbil_resignation_desk_1790243200256.jpg" alt="تقديم الاستقالة والإخطار الرسمي — إطلالة أفق أربيل">
+                    <div class="image-caption">الشكل (2): ممارسة العامل لحقه القانوني في تقديم إشعار الاستقالة الرسمي المكتوب — أفق أربيل وقلعتها التاريخية</div>
+                </div>
+
+                <h3 class="sub-title">1. التنظيم القانوني للاستقالة وضوابط مهلة الإخطار</h3>
+                <p>
+                    الاستقالة هي تعبير صريح ومكتوب يصدر من العامل يعلن فيه رغبته في وضع حد للرابطة العقدية. ولضمان عدم مباغتة صاحب العمل وإرباك النشاط الإنتاجي، فرض القانون ضوابط جوهرية:
+                </p>
+                <ul>
+                    <li><strong>الإخطار المسبق (Notice Period):</strong> يتعين على العامل توجيه إخطار خطي لصاحب العمل قبل موعد الإنهاء الفعلي بفترة محددة (غالباً 30 يوماً في العقود غير محددة المدة).</li>
+                    <li><strong>الاستمرار في أداء العمل:</strong> يظل العامل ملزماً بأداء واجباته المهنية طوال سريان مهلة الإخطار لقاء تقاضي أجره كاملاً، ولا يجوز له الانقطاع المفاجئ وإلا التزم بتعويض صاحب العمل ببدل مهلة الإنذار.</li>
+                    <li><strong>العدول عن الاستقالة:</strong> يمنح الفقه والقضاء العمالي العامل مهلة محددة (عادة خلال فترة الإخطار أو أسبوع من تقديمها) للرجوع عن استقالته إذا ثبت أنه قدمها تحت ضغط نفسي طارئ ما لم يكن صاحب العمل قد رتب بديلاً.</li>
+                </ul>
+
+                <h3 class="sub-title">2. حالات الترك الفوري للعمل دون إخطار (الإنهاء المشروع لحماية العامل)</h3>
+                <p>
+                    استثناءً من قاعدة الإخطار المسبق، أجاز القانون للعامل مغادرة العمل فوراً مع احتفاظه بكامل حقوقه القانونية ومكافأة نهاية الخدمة، بل ومطالبته بالتعويض عن الفصل التعسفي، في حالات انتهاك صاحب العمل الجسيم:
+                </p>
+
+                <div class="legal-box red">
+                    <div class="legal-box-title">🚨 حالات الإنهاء الفوري المشروع من جانب العامل:</div>
+                    <ul style="margin-bottom: 0;">
+                        <li><strong>التخلف عن دفع الأجر:</strong> امتناع أو تأخر صاحب العمل عن صرف الراتب المستحق للعامل دون مسوغ قانوني.</li>
+                        <li><strong>الاعتداء والمساس بالكرامة:</strong> وقوع اعتداء بدني، سب، أو سلوك مخل بالشرف والآداب من صاحب العمل أو ممثله بحق العامل أو أحد أفراد أسرته.</li>
+                        <li><strong>الخطر الداهم على السلامة:</strong> وجود خطر جسيم يهدد صحة العامل أو حياته في بيئة العمل مع تقاعس الإدارة عن تنفيذ تدابير السلامة المهنية المقررة.</li>
+                        <li><strong>الغش في شروط التعاقد:</strong> تكليف العامل بصورة قسرية بعمل يختلف اختلافاً جوهرياً عن المسمى الوظيفي المتفق عليه.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span>كتاب قانون العمل - د. عدنان العابد & د. يوسف إلياس | الفصل الخامس: انتهاء عقد العمل</span>
+                <span class="page-number-box">صفحة 3 من 6</span>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- الصفحة 4: إنهاء العقد بالإرادة المنفردة لصاحب العمل -->
+        <!-- ========================================== -->
+        <div class="page">
+            <div class="page-header">
+                <span class="header-title">إنهاء عقد العمل بإرادة أحد طرفيه أو كليهما</span>
+                <span class="header-course">Business Law | إشراف: م.م. هالة رحمن</span>
+            </div>
+
+            <div class="page-content">
+                <div class="section-badge">المبحث الثاني - ثالثاً (ص 334 وما بعدها)</div>
+                <h2 class="section-title">إنهاء العقد بالإرادة المنفردة لصاحب العمل والفصل التعسفي</h2>
+
+                <p>
+                    تُعد سلطة صاحب العمل في إنهاء عقد العمل من أدق موضوعات قانون العمل وأكثرها حساسية؛ فالأصل أن رب العمل يتمتع بسلطة إدارة منشأته وتنظيمها، إلا أن هذه السلطة ليست مطلقة، بل قيدها المشرع بقيود صارمة منعاً للتعسف وحمايةً للاستقرار الاجتماعي والاقتصادي للعامل باعتباره الطرف الضعيف تعاقدياً.
+                </p>
+
+                <div class="image-frame">
+                    <img src="images/erbil_employer_termination_1790243235199.jpg" alt="جلسة استماع ومراجعة قرارات إنهاء الخدمة — أربيل">
+                    <div class="image-caption">الشكل (3): انعقاد جلسات التدقيق ومراجعة مسوغات إنهاء الخدمة في قاعة اجتماعات تنفيذية راقية بأربيل</div>
+                </div>
+
+                <h3 class="sub-title">1. الأسباب المشروعة للإنهاء الصادر من صاحب العمل</h3>
+                <p>
+                    لا يجوز لصاحب العمل إنهاء العقد غير محدد المدة بإرادته المنفردة إلا إذا استند إلى سبب جدي ومشروع يقرره القانون، ومن أبرز هذه الحالات:
+                </p>
+                <ul>
+                    <li><strong>الأسباب الهيكلية والاقتصادية:</strong> تقليص حجم النشاط، إغلاق فرع، أو إدخال تكنولوجيا حديثة تؤدي لإلغاء وظائف، ويشترط في ذلك إشعار وزارة العمل والحصول على موافقة لجان إنهاء الخدمة المختصة.</li>
+                    <li><strong>عدم الكفاءة المهنية للعامل:</strong> ثبوت عجز العامل عن أداء واجباته المهنية المقررة بالرغم من توجيه إنذارات خطية له وإتاحة فرصة معقولة للتدريب والتحسين.</li>
+                    <li><strong>بلوغ السن القانونية للإحالة إلى التقاعد:</strong> استيفاء العامل لشروط التقاعد القانوني واستحقاق الراتب التقاعدي المضمون.</li>
+                </ul>
+
+                <h3 class="sub-title">2. ماهية الفصل التعسفي (Unfair Dismissal) ومعاييره</h3>
+                <p>
+                    يتحقق <strong>الفصل التعسفي</strong> متى أنهى صاحب العمل الرابطة العقدية دون سبب قانوني مشروع، أو إذا كان الإنهاء مشوباً بالانحراف بالسلطة، أو بدافع الكيد والتمييز.
+                </p>
+
+                <div class="legal-box gold">
+                    <div class="legal-box-title">⚖️ معايير حظر الإنهاء التعسفي وفقاً لقانون العمل:</div>
+                    <p style="margin: 0; font-size: 0.82rem;">
+                        يُعد الإنهاء تعسفياً وباطلاً حكماً إذا استند إلى: ممارسة العامل لنشاط نقابي مشروع، التقدم بشكوى ضد صاحب العمل أمام الجهات الرسمية، التمييز القائم على الجنس أو العرق أو الدين، أو الإنهاء أثناء تمتع العامل بإجازاته القانونية (كالمرضية، إجازة الوضع والأمومة).
+                    </p>
+                </div>
+
+                <h3 class="sub-title">3. الآثار القضائية المترتبة على ثبوت التعسف</h3>
+                <p>
+                    إذا قضت محكمة العمل أو اللجان المختصة بعدم مشروعية قرار الفصل، تترتب الآثار القانونية الحاسمة:
+                </p>
+                <ul>
+                    <li><strong>إعادة العامل إلى عمله (Reinstatement):</strong> إلزام صاحب العمل بإعادة العامل إلى وظيفته وصرف كامل أجوره عن فترة التوقف التعسفي.</li>
+                    <li><strong>التعويض المالي الجابر للضرر:</strong> في حال تعذر الإعادة، يحكم للعامل بتعويض مادي ومعنوي يعادل أجر عدة أشهر عن كل سنة خدمة، فضلاً عن بدل مهلة الإخطار ومكافأة نهاية الخدمة كاملة.</li>
+                </ul>
+            </div>
+
+            <div class="page-footer">
+                <span>كتاب قانون العمل - د. عدنان العابد & د. يوسف إلياس | الفصل الخامس: انتهاء عقد العمل</span>
+                <span class="page-number-box">صفحة 4 من 6</span>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- الصفحة 5: الفصل التأديبي والخطأ الجسيم -->
+        <!-- ========================================== -->
+        <div class="page">
+            <div class="page-header">
+                <span class="header-title">إنهاء عقد العمل بإرادة أحد طرفيه أو كليهما</span>
+                <span class="header-course">Business Law | إشراف: م.م. هالة رحمن</span>
+            </div>
+
+            <div class="page-content">
+                <div class="section-badge">المبحث الثاني - رابعاً (ص 346 وما بعدها)</div>
+                <h2 class="section-title">الفصل التأديبي وإنهاء العقد لارتكاب الخطأ الجسيم</h2>
+
+                <p>
+                    يمثل الفصل التأديبي أشد العقوبات الانضباطية التي يملكها صاحب العمل في مواجهة العامل المخالف، حيث يؤدي إلى حرمان العامل من عمله ومصدر رزقه، وقد يمتد لحرمانه من مهلة الإخطار ومكافأة نهاية الخدمة. ولذلك أحاط المشرع هذه العقوبة بسياج من الضمانات الصارمة وحصر أسبابها في <strong>"الخطأ الجسيم"</strong> الوارد في ص 346 وما بعدها من المرجع الدراسي.
+                </p>
+
+                <div class="image-frame">
+                    <img src="images/erbil_disciplinary_gavel_1790243270695.jpg" alt="المحكمة العمالية والرقابة القضائية على الفصل التأديبي — أربيل">
+                    <div class="image-caption">الشكل (4): الرقابة القضائية لمحاكم العمل ولجان التحكيم على الفصل التأديبي لارتكاب الخطأ الجسيم — إطلالة قلعة أربيل</div>
+                </div>
+
+                <h3 class="sub-title">1. صور الخطأ الجسيم المبررة للفصل الفوري (المادة 346)</h3>
+                <p>
+                    حدد المرجع الفقهي وقانون العمل العراقي حالات حصرية تبلغ حداً من الجسامة لا يمكن معه استمرار الرابطة العقدية:
+                </p>
+                <ul>
+                    <li><strong>1. الخطأ الجسيم المنشئ لضرر مادي فادح:</strong> إتيان العامل فعلاً أو إهمالاً ينتج عنه خسارة مادية جسيمة لصاحب العمل، ويشترط القانون لصحة الفصل إبلاغ الجهة المختصة أو مركز الشرطة بالحادث خلال (24 إلى 48) ساعة من وقت العلم به.</li>
+                    <li><strong>2. انتحال صفة أو تقديم مستندات مزورة:</strong> لجوء العامل للتزوير في شهاداته أو هويته للحصول على العمل.</li>
+                    <li><strong>3. إفشاء أسرار المنشأة الصناعية أو التجارية:</strong> إفشاء العامل لأسرار المهنة التي اطلع عليها بحكم عمله مما ألحق بالمنشأة أضراراً تنافسية جسيمة.</li>
+                    <li><strong>4. التغيب غير المشروع عن العمل:</strong> انقطاع العامل دون عذر مشروع لمدة تزيد عن الحدود القانونية (كعشرة أيام متصلة أو عشرين يوماً متقطعة خلال السنة الواحدة)، بشرط توجيه إنذار كتابي رسمي له.</li>
+                    <li><strong>5. الاعتداء على صاحب العمل أو الرؤساء:</strong> الاعتداء بالضرب أو التهديد أو التحرش أثناء أوقات العمل أو بسببه.</li>
+                </ul>
+
+                <h3 class="sub-title">2. الضمانات الإجرائية الجوهرية قبل توقيع عقوبة الفصل</h3>
+                <p>
+                    لا يملك صاحب العمل سلطة توقيع الفصل اعتباطياً، بل رسم القانون مساراً إجرائياً إلزامياً تحت طائلة البطلان:
+                </p>
+
+                <div class="legal-box red">
+                    <div class="legal-box-title">🛡️ الضمانات الإجرائية الواجبة لصحة الفصل التأديبي:</div>
+                    <p style="margin: 0; font-size: 0.82rem;">
+                        <strong>أ. إجراء تحقيق كتابي رسمي:</strong> إخطار العامل خطياً بالمخالفة المنسوبة إليه خلال فترة وجيزة من اكتشافها.<br>
+                        <strong>ب. كفالة حق الدفاع:</strong> سماع أقوال العامل وتمكينه من تقديم دفوعه وشهوده وحضور ممثل نقابي معه.<br>
+                        <strong>ج. تسبيب القرار:</strong> صدور قرار الفصل مسبباً بصورة دقيقة ومودعاً في ملفه الشخصي مع إخطاره خطياً به.<br>
+                        <strong>د. الخضوع للرقابة القضائية:</strong> حق العامل في الطعن بقرار الفصل أمام محكمة العمل المختصة خلال المهل القانونية.
+                    </p>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span>كتاب قانون العمل - د. عدنان العابد & د. يوسف إلياس | الفصل الخامس: انتهاء عقد العمل</span>
+                <span class="page-number-box">صفحة 5 من 6</span>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- الصفحة 6: التحليل المقارن، التوصيات والمراجع -->
+        <!-- ========================================== -->
+        <div class="page">
+            <div class="page-header">
+                <span class="header-title">إنهاء عقد العمل بإرادة أحد طرفيه أو كليهما</span>
+                <span class="header-course">Business Law | إشراف: م.م. هالة رحمن</span>
+            </div>
+
+            <div class="page-content">
+                <div class="section-badge">خاتمة التقرير والدراسة المقارنة</div>
+                <h2 class="section-title">المقارنة التشريعية الشاملة، النتائج وقائمة المراجع</h2>
+
+                <p>
+                    يوضح الجدول المقارن التالي الفروق القانونية الجوهرية بين الحالات الأربع لإنهاء عقد العمل موضوع المبحث الثاني، والتي تشكل جوهر مادة قانون الأعمال:
+                </p>
+
+                <table class="comp-table">
+                    <thead>
+                        <tr>
+                            <th>وجه المقارنة</th>
+                            <th>أولاً: التقايل الرضائي</th>
+                            <th>ثانياً: استقالة العامل</th>
+                            <th>ثالثاً: إنهاء صاحب العمل</th>
+                            <th>رابعاً: الفصل التأديبي (خطأ جسيم)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>مصدر الإرادة</strong></td>
+                            <td>تطابق إرادتي الطرفين</td>
+                            <td>الإرادة المنفردة للعامل</td>
+                            <td>الإرادة المنفردة للإدارة</td>
+                            <td>جزاء انضباطي صادر من الإدارة</td>
+                        </tr>
+                        <tr>
+                            <td><strong>مهلة الإخطار (الإنذار)</strong></td>
+                            <td><span class="tag-cond">حسب ما يتم الاتفاق عليه</span></td>
+                            <td><span class="tag-yes">ملزمة (إلا بالحالات الاستثنائية)</span></td>
+                            <td><span class="tag-yes">إلزامية ومقيدة قانوناً</span></td>
+                            <td><span class="tag-no">يسقط الحق فيها فوراً</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>مكافأة نهاية الخدمة</strong></td>
+                            <td><span class="tag-yes">مستحقة بالكامل</span></td>
+                            <td><span class="tag-cond">مستحقة وفق سنوات الخدمة</span></td>
+                            <td><span class="tag-yes">مستحقة كاملة + تعويض إن تعسف</span></td>
+                            <td><span class="tag-no">قد يُحرم منها أو من جزء منها</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>التعويض المالي</strong></td>
+                            <td><span class="tag-no">لا يوجد (لتراضيهما)</span></td>
+                            <td><span class="tag-no">لا يوجد (إلا إذا أخل بالإنذار)</span></td>
+                            <td><span class="tag-yes">مستحق إذا ثبت التعسف</span></td>
+                            <td><span class="tag-cond">يحق لرب العمل طلب تعويض الضرر</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>الرقابة القضائية</strong></td>
+                            <td>التأكد من سلامة الرضا</td>
+                            <td>التأكد من حرية الاستقالة</td>
+                            <td>رقابة مشروعية مسوغ الإنهاء</td>
+                            <td>رقابة التناسب وحق الدفاع والتحقيق</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="image-frame" style="margin: 6px 0;">
+                    <img src="images/erbil_library_comparison_1790243302843.jpg" alt="المكتبة القانونية الكلاسيكية وإطلالة قلعة أربيل" style="height: 125px;">
+                    <div class="image-caption">الشكل (5): المقارنة التشريعية والبحث الفقهي في مصادر قانون العمل والمراجع الأكاديمية — أربيل 2026</div>
+                </div>
+
+                <h3 class="sub-title">1. أهم النتائج والتوصيات المستخلصة</h3>
+                <ul>
+                    <li><strong>التوازن بين مصلحة العمل وحماية العامل:</strong> يحرص المشرع على عدم تعطيل استثمارات صاحب العمل وفي ذات الوقت حماية العامل من الطرد التعسفي والفقر المفاجئ.</li>
+                    <li><strong>أهمية الإثبات الكتابي والتوثيق:</strong> يُعد التوثيق الكتابي حجر الزاوية في حل النزاعات العمالية، سواء في تقديم الإخطارات أو محاضر التحقيق الإداري.</li>
+                    <li><strong>التوصية بتفعيل الوساطة والتوفيق:</strong> تشجيع اللجان العمالية المشتركة ومكاتب العمل على تسوية النزاعات حبياً قبل تصعيدها إلى المحاكم لتقليل كلفة التقاضي.</li>
+                </ul>
+
+                <h3 class="sub-title">2. قائمة المصادر والمراجع المعتمدة</h3>
+                <div class="legal-box" style="margin-top: 5px; font-size: 0.8rem; line-height: 1.5;">
+                    <ol style="padding-right: 18px; margin: 0;">
+                        <li><strong>المرجع الرئيسي المعتمد:</strong> د. عدنان العابد (أستاذ قانون العمل والضمان المساعد بكلية القانون - جامعة بغداد) & د. يوسف إلياس (أستاذ مساعد بمعهد الإدارة - بغداد)، <em>كتاب قانون العمل</em>، الفصل الخامس: انتهاء عقد العمل، المبحث الثاني: إنهاء العقد بإرادة أحد طرفيه أو كليهما، الصفحات (324 - 366)، الناشر: العاتك لصناعة الكتاب - القاهرة، توزيع: المكتبة القانونية - بغداد.</li>
+                        <li><strong>التشريع الأساسي:</strong> قانون العمل العراقي رقم (37) لسنة 2015 وتعديلاته والتعليمات الوزارية المنفذة له.</li>
+                        <li><strong>المقرر الدراسي:</strong> مادة قانون الأعمال (Business Law)، إشراف الأستاذة: م.م. هالة رحمن (Ass.L. Hala Rahman).</li>
+                        <li><strong>المراجع المقارنة:</strong> اتفاقيات منظمة العمل الدولية (ILO) المتعلقة بإنهاء الاستخدام (الاتفاقية رقم 158 والتوصية رقم 166).</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span>تم إعداد وتوثيق التقرير بنجاح وفقاً للمعايير الأكاديمية والتشريعية | 2026</span>
+                <span class="page-number-box">صفحة 6 من 6</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
