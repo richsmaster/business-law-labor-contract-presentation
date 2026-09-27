@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RotateCcw, ShieldCheck } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 
 interface BookBackCoverProps {
-  onReopenBook: () => void;
+  onReopenBook?: () => void;
 }
 
 export const BookBackCover: React.FC<BookBackCoverProps> = ({ onReopenBook }) => {
@@ -20,7 +20,12 @@ export const BookBackCover: React.FC<BookBackCoverProps> = ({ onReopenBook }) =>
       exit={{ opacity: 0, scale: 0.95 }}
       className="book-cover-wrapper"
     >
-      <div className="book-leather-cover back-cover">
+      <div 
+        className="book-leather-cover back-cover"
+        onClick={onReopenBook}
+        style={{ cursor: onReopenBook ? 'pointer' : 'default' }}
+        title={onReopenBook ? "انقر لإعادة فتح الكتاب من البداية" : undefined}
+      >
         {/* Gold Corner Protectors */}
         <div className="gold-corner top-right"></div>
         <div className="gold-corner top-left"></div>
@@ -54,17 +59,7 @@ export const BookBackCover: React.FC<BookBackCoverProps> = ({ onReopenBook }) =>
               </span>
             </div>
 
-            {/* Reopen Action Button */}
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 35px rgba(212, 175, 55, 0.7)" }}
-              whileTap={{ scale: 0.96 }}
-              onClick={onReopenBook}
-              className="btn-open-book"
-              style={{ marginTop: '2rem' }}
-            >
-              <RotateCcw size={20} />
-              <span>إعادة فتح الكتاب من البداية</span>
-            </motion.button>
+
           </div>
 
           <div className="cover-bottom-year">
