@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { SlideItem } from '../data/slidesData';
-import { BookOpen, Scale, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 interface SlideViewProps {
   slide: SlideItem;
@@ -180,17 +180,19 @@ export const SlideView: React.FC<SlideViewProps> = ({ slide, direction }) => {
   };
 
   return (
-    <div className="book-open-spread">
+    <div className="book-open-spread" data-component="SlideView">
       <AnimatePresence mode="wait" custom={direction}>
         <motion.div
           key={slide.id}
+          data-component="SlideView"
+          data-slide-id={slide.id}
           custom={direction}
           variants={pageFoldVariants}
           initial="initial"
           animate="animate"
           exit="exit"
           className="book-page-leaf"
-          style={{ perspective: 2500 }}
+          style={{ perspective: 2500, backgroundColor: '#000000' }}
         >
           {/* Subtle Page Spine Fold Crease */}
           <div className="page-spine-crease"></div>
@@ -221,23 +223,27 @@ export const SlideView: React.FC<SlideViewProps> = ({ slide, direction }) => {
 
               {/* Title in Authentic Thuluth Calligraphy - Enlarged & Grand */}
               <motion.h1
-                initial={{ opacity: 0, y: -16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15 }}
+                initial={{ opacity: 0, y: -16, filter: 'blur(3px)' }}
+                animate={{ 
+                  opacity: 1, 
+                  y: 0, 
+                  filter: 'blur(0px)',
+                  textShadow: [
+                    "0 4px 18px rgba(0, 0, 0, 0.9), 0 0 25px rgba(212, 175, 55, 0.6)",
+                    "0 4px 22px rgba(0, 0, 0, 0.9), 0 0 45px rgba(255, 235, 160, 0.85)",
+                    "0 4px 18px rgba(0, 0, 0, 0.9), 0 0 25px rgba(212, 175, 55, 0.6)"
+                  ]
+                }}
+                transition={{ 
+                  opacity: { duration: 0.6, delay: 0.15 },
+                  y: { duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] },
+                  filter: { duration: 0.6, delay: 0.15 },
+                  textShadow: { repeat: Infinity, duration: 5, ease: "easeInOut" }
+                }}
                 className="slide-title-thuluth"
               >
                 {slide.title}
               </motion.h1>
-
-              {/* Subtitle - Enlarged & High Contrast */}
-              <motion.p
-                initial={{ opacity: 0, y: -12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="slide-subtitle"
-              >
-                {slide.subtitle}
-              </motion.p>
 
               {/* Exactly 4 to 5 Concise Bullet Points in Qomra Font - Enlarged & High Legibility */}
               <div className="points-list">
@@ -275,16 +281,7 @@ export const SlideView: React.FC<SlideViewProps> = ({ slide, direction }) => {
                 })}
               </div>
 
-              {/* Academic Source / Legal Reference */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.55 }}
-                className="slide-footer-ref"
-              >
-                <BookOpen size={20} color="var(--gold-bright)" />
-                <span className="qomra-font">{slide.legalRef}</span>
-              </motion.div>
+
             </div>
 
             {/* Right Column: Erbil Landmark & Authentic Iraqi Legal Contract Image */}
@@ -306,10 +303,6 @@ export const SlideView: React.FC<SlideViewProps> = ({ slide, direction }) => {
                   }}
                 />
                 <div className="image-card-overlay">
-                  <div className="image-stamp-badge">
-                    <Scale size={16} style={{ display: 'inline', marginLeft: 5 }} />
-                    عقد عمل موثق — أربيل
-                  </div>
                   <div style={{ fontSize: '0.95rem', color: '#e2e8f0', fontWeight: 700 }} className="qomra-font">
                     مقرر قانون الأعمال
                   </div>
