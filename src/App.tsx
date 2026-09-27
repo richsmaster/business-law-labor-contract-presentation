@@ -6,6 +6,7 @@ import { BookBackCover } from './components/BookBackCover';
 import { AnimatePresence } from 'framer-motion';
 import { Layers } from 'lucide-react';
 import { VisualEditor } from './components/VisualEditor';
+import { GoldenStarsCursor } from './components/GoldenStarsCursor';
 import { playPageTurnSound } from './utils/audio';
 
 export type BookState = 'closed-front' | 'reading' | 'closed-back';
@@ -193,6 +194,9 @@ export const App: React.FC = () => {
       </main>
 
 
+
+      {/* Golden Stardust Mouse Trail (Hardware Accelerated) */}
+      <GoldenStarsCursor />
 
       {/* Visual Editor & Element Inspector (identical to clincsa DevInspector) */}
       <VisualEditor />
