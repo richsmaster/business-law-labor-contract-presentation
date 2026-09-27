@@ -822,9 +822,9 @@ body {
 
 .point-number-rosette {
   position: relative;
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -841,7 +841,7 @@ body {
   position: relative;
   z-index: 2;
   font-weight: 900;
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   color: #fffdf2;
   font-family: 'Alexandria', sans-serif;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
@@ -850,14 +850,15 @@ body {
 .point-gold-prefix {
   color: var(--gold-bright);
   font-weight: 800;
-  margin-left: 6px;
-  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+  font-size: 1.55rem;
+  margin-left: 8px;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
 }
 
 .point-text {
-  font-size: 1.26rem;
+  font-size: 1.55rem;
   color: #ffffff;
-  line-height: 1.44;
+  line-height: 1.48;
   font-weight: 600;
   font-family: var(--font-qomra);
   letter-spacing: 0.2px;
@@ -1053,10 +1054,12 @@ body {
 
 /* Responsive Scaling for Laptops & Projectors */
 @media (max-height: 800px) {
-  .slide-title-thuluth { font-size: 2.75rem; }
-  .point-text { font-size: 1.15rem; }
-  .point-number { width: 36px; height: 36px; font-size: 1.1rem; }
-  .slide-subtitle { font-size: 1.18rem; }
-  .book-cover-wrapper { height: 500px; }
+  .slide-title-thuluth { font-size: 2.85rem; }
+  .point-text { font-size: 1.48rem; }
+  .point-gold-prefix { font-size: 1.48rem; }
+  .point-number-rosette { width: 40px; height: 40px; min-width: 40px; }
+  .point-digit { font-size: 1.25rem; }
+  .slide-subtitle { font-size: 1.35rem; }
+  .book-cover-wrapper { height: 520px; }
   .thuluth-cover-title { font-size: 3.4rem; }
 }
