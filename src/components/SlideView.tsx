@@ -240,12 +240,12 @@ export const SlideView: React.FC<SlideViewProps> = ({ slide, direction, language
                   filter: { duration: 0.6, delay: 0.15 },
                   textShadow: { repeat: Infinity, duration: 5, ease: "easeInOut" }
                 }}
-                className={`slide-title-thuluth ${isKurdish ? 'jazeera-font' : 'qomra-font'}`}
+                className={`slide-title-thuluth ${isKurdish ? 'kurdish-font' : 'qomra-font'}`}
               >
                 {currentTitle}
               </motion.h1>
 
-              {/* Exactly 4 to 5 Concise Bullet Points in Qomra / Al Jazeera Font */}
+              {/* Exactly 4 to 5 Concise Bullet Points in Qomra / Kurdish Font */}
               <div className="points-list">
                 {currentPoints.map((point, index) => {
                   const colonIndex = point.indexOf(':');
@@ -266,7 +266,7 @@ export const SlideView: React.FC<SlideViewProps> = ({ slide, direction, language
                         </svg>
                         <span className="point-digit">{index + 1}</span>
                       </div>
-                      <div className={`point-text ${isKurdish ? 'jazeera-font' : 'qomra-font'}`}>
+                      <div className={`point-text ${isKurdish ? 'kurdish-font' : 'qomra-font'}`}>
                         {hasPrefix ? (
                           <>
                             <strong className="point-gold-prefix">{prefix}</strong>

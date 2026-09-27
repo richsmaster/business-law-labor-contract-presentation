@@ -47,7 +47,7 @@ export const BookBackCover: React.FC<BookBackCoverProps> = ({ onReopenBook, lang
           }}
         >
           <div 
-            className={`cover-center-content back-cover-center ${isKurdish ? 'jazeera-font' : 'qomra-font'}`}
+            className={`cover-center-content back-cover-center ${isKurdish ? 'kurdish-font' : 'qomra-font'}`}
             style={{
               margin: 0,
               padding: 0,
@@ -62,7 +62,7 @@ export const BookBackCover: React.FC<BookBackCoverProps> = ({ onReopenBook, lang
             }}
           >
             <h1 
-              className={`thuluth-cover-title back-cover-title ${isKurdish ? 'jazeera-font' : 'qomra-font'}`}
+              className={`thuluth-cover-title back-cover-title ${isKurdish ? 'kurdish-font' : 'qomra-font'}`}
               style={{
                 fontSize: '3.1rem',
                 margin: 0,
@@ -78,7 +78,7 @@ export const BookBackCover: React.FC<BookBackCoverProps> = ({ onReopenBook, lang
             </div>
 
             <p 
-              className={`cover-sub-text back-cover-sub ${isKurdish ? 'jazeera-font' : 'qomra-font'}`}
+              className={`cover-sub-text back-cover-sub ${isKurdish ? 'kurdish-font' : 'qomra-font'}`}
               style={{
                 fontSize: '1.45rem',
                 color: '#fce8a6',

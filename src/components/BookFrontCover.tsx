@@ -325,7 +325,7 @@ export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook, lang
           </motion.div>
 
           {/* Central Illumination & Calligraphic Title Area */}
-          <div className={`cover-center-content ${isKurdish ? 'jazeera-font' : 'qomra-font'}`}>
+          <div className={`cover-center-content ${isKurdish ? 'kurdish-font' : 'qomra-font'}`}>
             {/* Islamic Shamseh Seal with Scales of Justice */}
             <RoyalShamsehSeal />
 
@@ -336,7 +336,7 @@ export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook, lang
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h1 className={`thuluth-cover-title ${isKurdish ? 'jazeera-font' : 'qomra-font'}`}>
+              <h1 className={`thuluth-cover-title ${isKurdish ? 'kurdish-font' : 'qomra-font'}`}>
                 <motion.span 
                   className="title-row-1"
                   initial={{ opacity: 0, y: 16, filter: 'blur(3px)' }}

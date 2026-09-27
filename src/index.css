@@ -95,33 +95,54 @@
 }
 
 /* ======================================================== */
-/* AL JAZEERA FONT FAMILY (خط الجزيرة المعتمد للكردي)        */
+/* OFFICIAL KURDISH SORANI FONT FAMILY (فۆنتی ستانداردی کوردی) */
+/* Noto Sans Arabic & Vazirmatn: 100% Cursive Accuracy       */
 /* ======================================================== */
 @font-face {
-  font-family: 'AlJazeera';
-  src: url('/fonts/al-jazeera-kurdish.ttf') format('truetype'),
-       url('/fonts/al-jazeera-arabic.woff2') format('woff2'),
-       url('/fonts/al-jazeera-arabic.ttf') format('truetype'),
-       local('Nizar Jazeera'),
-       local('Al-Jazeera-Arabic'),
-       local('Al-Jazeera-Arabic-Regular'),
-       local('AlJazeera');
+  font-family: 'Noto Sans Arabic';
+  src: url('/fonts/noto-sans-arabic-regular.ttf') format('truetype'),
+       url('https://fonts.gstatic.com/s/notosansarabic/v33/nwpxtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlhQ5l3sQWIHPqzCfyGyvuw.ttf') format('truetype'),
+       local('Noto Sans Arabic'),
+       local('NotoSansArabic');
   font-weight: 400 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'AlJazeera';
-  src: url('/fonts/al-jazeera-kurdish.ttf') format('truetype'),
-       url('/fonts/al-jazeera-arabic.woff2') format('woff2'),
-       url('/fonts/al-jazeera-arabic.ttf') format('truetype'),
-       local('Nizar Jazeera'),
-       local('Al-Jazeera-Arabic-Bold'),
-       local('Al-Jazeera-Arabic'),
-       local('AlJazeera-Bold');
+  font-family: 'Noto Sans Arabic';
+  src: url('/fonts/noto-sans-arabic-semibold.ttf') format('truetype'),
+       url('https://fonts.gstatic.com/s/notosansarabic/v33/nwpxtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlhQ5l3sQWIHPqzCfFmuvuw.ttf') format('truetype'),
+       local('Noto Sans Arabic SemiBold'),
+       local('NotoSansArabic-SemiBold');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans Arabic';
+  src: url('/fonts/noto-sans-arabic-bold.ttf') format('truetype'),
+       url('https://fonts.gstatic.com/s/notosansarabic/v33/nwpxtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlhQ5l3sQWIHPqzCfL2uvuw.ttf') format('truetype'),
+       local('Noto Sans Arabic Bold'),
+       local('NotoSansArabic-Bold');
   font-weight: 700 900;
   font-style: normal;
+  font-display: swap;
+}
+
+/* Local Kurdish Standard Aliases */
+@font-face {
+  font-family: 'KurdishStandard';
+  src: url('/fonts/noto-sans-arabic-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'KurdishStandard';
+  src: url('/fonts/noto-sans-arabic-bold.ttf') format('truetype');
+  font-weight: 700;
   font-display: swap;
 }
 
@@ -141,7 +162,8 @@
   --text-muted: #94a3b8;
   --font-thuluth: 'Katibeh', 'DecoType Thuluth', 'Aldhabi', 'Amiri Quran', 'Traditional Arabic', serif;
   --font-qomra: 'QOMRAARABICITF-MEDIUM', 'Qomra Arabic', 'Qomra', 'Alexandria', 'Tajawal', sans-serif;
-  --font-jazeera: 'AlJazeera', 'Nizar Jazeera', 'Al-Jazeera-Arabic', 'Noto Sans Arabic', 'Vazirmatn', sans-serif;
+  --font-kurdish: 'Noto Sans Arabic', 'KurdishStandard', 'Vazirmatn', 'Noto Kufi Arabic', 'Segoe UI', Tahoma, sans-serif;
+  --font-jazeera: var(--font-kurdish); /* Backward compatibility alias */
 }
 
 * {
@@ -170,13 +192,21 @@ body {
   font-family: var(--font-qomra);
 }
 
-.jazeera-font {
-  font-family: var(--font-jazeera) !important;
+.kurdish-font {
+  font-family: var(--font-kurdish) !important;
+  letter-spacing: 0 !important;
 }
 
-/* When Kurdish language is active, switch to Al Jazeera font while Arabic remains Qomra */
+.jazeera-font {
+  font-family: var(--font-kurdish) !important;
+  letter-spacing: 0 !important;
+}
+
+/* When Kurdish language is active, switch exclusively to Noto Kurdish font while Arabic stays strictly Qomra */
 [data-lang="ku"] body,
 [data-lang="ku"] .presentation-container,
+[data-lang="ku"] .kurdish-font,
+[data-lang="ku"] .jazeera-font,
 [data-lang="ku"] .qomra-font,
 [data-lang="ku"] .slide-title-thuluth,
 [data-lang="ku"] .thuluth-cover-title,
@@ -189,7 +219,8 @@ body {
 [data-lang="ku"] .slide-badge-pill,
 [data-lang="ku"] .legal-ref-badge,
 [data-lang="ku"] .back-cover {
-  font-family: var(--font-jazeera) !important;
+  font-family: var(--font-kurdish) !important;
+  letter-spacing: 0 !important; /* Preserves flawless cursive connection for Kurdish characters */
 }
 
 /* ======================================================== */

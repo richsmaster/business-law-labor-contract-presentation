@@ -6,14 +6,15 @@
     <title>كتاب قانون الأعمال: إنهاء عقد العمل بإرادة أحد طرفيه أو كليهما</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Preload Qomra & Al Jazeera Kurdish Fonts -->
+    <!-- Preload Qomra (Arabic) & Noto Sans Arabic (Kurdish) Fonts -->
     <link rel="preload" href="/fonts/QOMRAARABICITF-MEDIUM.OTF" as="font" type="font/otf" crossorigin />
     <link rel="preload" href="/fonts/QOMRAARABICITF-REGULAR.OTF" as="font" type="font/otf" crossorigin />
     <link rel="preload" href="/fonts/QOMRAARABICITF-BOLD.OTF" as="font" type="font/otf" crossorigin />
-    <link rel="preload" href="/fonts/al-jazeera-kurdish.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/noto-sans-arabic-regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/noto-sans-arabic-bold.ttf" as="font" type="font/ttf" crossorigin />
 
     <!-- Authentic Royal Arabic Calligraphy Fonts (Katibeh Thuluth, Amiri, Amiri Quran, Aref Ruqaa, Reem Kufi) & Qomra/Alexandria/Noto body fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800;900&family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Aref+Ruqaa+Ink:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Katibeh&family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Reem+Kufi:wght@500;600;700;800&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800;900&family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Aref+Ruqaa+Ink:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Katibeh&family=Noto+Sans+Arabic:wght@400;500;600;700;800;900&family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&family=Reem+Kufi:wght@500;600;700;800&family=Tajawal:wght@400;500;700;800;900&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
       @font-face {
         font-family: 'Qomra';
@@ -25,28 +26,50 @@
         src: local('DecoType Thuluth'), local('Aldhabi'), local('Katibeh');
         font-display: swap;
       }
+      /* Official Kurdish Sorani Font - Noto Sans Arabic (Perfect Cursive Connections & Zero Distortion) */
       @font-face {
-        font-family: 'AlJazeera';
-        src: url('/fonts/al-jazeera-kurdish.ttf') format('truetype'),
-             url('/fonts/al-jazeera-arabic.woff2') format('woff2'),
-             url('/fonts/al-jazeera-arabic.ttf') format('truetype'),
-             local('Nizar Jazeera'),
-             local('Al-Jazeera-Arabic'),
-             local('AlJazeera');
-        font-weight: normal;
+        font-family: 'Noto Sans Arabic';
+        src: url('/fonts/noto-sans-arabic-regular.ttf') format('truetype'),
+             url('https://fonts.gstatic.com/s/notosansarabic/v33/nwpxtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlhQ5l3sQWIHPqzCfyGyvuw.ttf') format('truetype'),
+             local('Noto Sans Arabic'),
+             local('NotoSansArabic');
+        font-weight: 400 500;
         font-style: normal;
         font-display: swap;
       }
       @font-face {
-        font-family: 'AlJazeera';
-        src: url('/fonts/al-jazeera-kurdish.ttf') format('truetype'),
-             url('/fonts/al-jazeera-arabic.woff2') format('woff2'),
-             url('/fonts/al-jazeera-arabic.ttf') format('truetype'),
-             local('Nizar Jazeera'),
-             local('Al-Jazeera-Arabic-Bold'),
-             local('AlJazeera');
-        font-weight: bold;
+        font-family: 'Noto Sans Arabic';
+        src: url('/fonts/noto-sans-arabic-semibold.ttf') format('truetype'),
+             url('https://fonts.gstatic.com/s/notosansarabic/v33/nwpxtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlhQ5l3sQWIHPqzCfFmuvuw.ttf') format('truetype'),
+             local('Noto Sans Arabic SemiBold'),
+             local('NotoSansArabic-SemiBold');
+        font-weight: 600;
         font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Noto Sans Arabic';
+        src: url('/fonts/noto-sans-arabic-bold.ttf') format('truetype'),
+             url('https://fonts.gstatic.com/s/notosansarabic/v33/nwpxtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlhQ5l3sQWIHPqzCfL2uvuw.ttf') format('truetype'),
+             local('Noto Sans Arabic Bold'),
+             local('NotoSansArabic-Bold');
+        font-weight: 700 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Kurdish Standard Alias */
+      @font-face {
+        font-family: 'KurdishStandard';
+        src: url('/fonts/noto-sans-arabic-regular.ttf') format('truetype'),
+             local('Noto Sans Arabic');
+        font-weight: 400;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'KurdishStandard';
+        src: url('/fonts/noto-sans-arabic-bold.ttf') format('truetype'),
+             local('Noto Sans Arabic Bold');
+        font-weight: 700;
         font-display: swap;
       }
     </style>

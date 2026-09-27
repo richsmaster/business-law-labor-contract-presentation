@@ -172,25 +172,25 @@ export const App: React.FC = () => {
               alt="Knowledge University Logo" 
               className="univ-logo-img" 
             />
-            <span className={`univ-badge-text ${language === 'ku' ? 'jazeera-font' : 'qomra-font'}`}>
+            <span className={`univ-badge-text ${language === 'ku' ? 'kurdish-font' : 'qomra-font'}`}>
               {language === 'ku' ? "Knowledge University — زانکۆی نۆلج" : "Knowledge University — جامعة نولج"}
             </span>
           </div>
         </div>
 
         <div className="top-bar-left">
-          {/* Translation Toggle Button (عربي / کوردی) with Al Jazeera font for Kurdish & Qomra for Arabic */}
+          {/* Translation Toggle Button (عربي / کوردی) with Noto Kurdish font for Kurdish & Qomra for Arabic */}
           <button
-            className={`btn-translate-lang ${language === 'ku' ? 'jazeera-font' : 'qomra-font'}`}
+            className={`btn-translate-lang ${language === 'ku' ? 'kurdish-font' : 'qomra-font'}`}
             onClick={toggleLanguage}
-            title={language === 'ar' ? 'گۆڕین بۆ زمانی کوردی سۆرانی (بە فۆنتی خط الجزيرة)' : 'التبديل إلى اللغة العربية (بخط قمرة)'}
+            title={language === 'ar' ? 'گۆڕین بۆ زمانی کوردی سۆرانی (بە فۆنتی ستانداردی نۆتۆ)' : 'التبديل إلى اللغة العربية (بخط قمرة الملكي)'}
           >
             <Languages size={18} />
             <span className="translate-label">
               {language === 'ar' ? 'کوردی' : 'العربية'}
             </span>
             <span className="translate-badge-font">
-              {language === 'ar' ? 'خط الجزيرة' : 'خط قمرة'}
+              {language === 'ar' ? 'فۆنتی نۆتۆ' : 'خط قمرة'}
             </span>
           </button>
 
