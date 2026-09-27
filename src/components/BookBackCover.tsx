@@ -47,9 +47,9 @@ export const BookBackCover: React.FC<BookBackCoverProps> = ({ onReopenBook }) =>
 
 
 
-            <div className="author-item" style={{ marginTop: '1.5rem' }}>
-              <span className="author-role">إشراف وتوجيه:</span>
-              <span className="author-name" style={{ fontSize: '1.1rem' }}>
+            <div className="author-item back-cover-author">
+              <span className="author-role back-author-role">إشراف وتوجيه:</span>
+              <span className="author-name back-author-name">
                 الأستاذة م.م. هالة رحمن (Ass.L. Hala Rahman)
               </span>
             </div>

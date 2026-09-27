@@ -603,6 +603,45 @@ body {
   background: rgba(212, 175, 55, 0.45);
 }
 
+/* Back Cover Grand Author Item - Centered & Enlarged */
+.back-cover .author-item,
+.author-item.back-cover-author {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 1.25rem 3.4rem;
+  background: rgba(14, 14, 14, 0.92);
+  border: 1.8px solid var(--gold-primary);
+  border-radius: 18px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.85), 0 0 35px rgba(212, 175, 55, 0.3);
+  margin: 2rem auto 1.4rem auto !important;
+  max-width: 650px;
+  width: auto;
+}
+
+.back-cover .author-role,
+.back-author-role {
+  font-family: var(--font-qomra);
+  font-size: 1.35rem;
+  color: var(--gold-bright);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 14px rgba(212, 175, 55, 0.5);
+}
+
+.back-cover .author-name,
+.back-author-name {
+  font-family: var(--font-qomra);
+  font-size: 1.95rem;
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 0 24px rgba(212, 175, 55, 0.4);
+}
+
 /* Open Book Action Button */
 .btn-open-book {
   background: var(--gold-gradient);
