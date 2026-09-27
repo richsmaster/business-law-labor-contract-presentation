@@ -889,15 +889,15 @@ body {
   display: none !important;
 }
 
-/* THULUTH TITLE - BIGGER, MAJESTIC, ROYAL */
+/* SLIDE TITLE IN QOMRA FONT - BOLD, MAJESTIC, ROYAL */
 .slide-title-thuluth {
-  font-family: var(--font-thuluth);
-  font-size: 3.35rem;
-  line-height: 1.28;
-  font-weight: 700;
+  font-family: var(--font-qomra) !important;
+  font-size: 2.75rem;
+  line-height: 1.32;
+  font-weight: 800;
   color: #ffffff;
   text-shadow: 0 4px 14px rgba(0, 0, 0, 0.8), 0 0 35px rgba(212, 175, 55, 0.4);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
 }
 
 .slide-subtitle {
@@ -1188,7 +1188,7 @@ body {
 
 /* Responsive Scaling for Laptops & Projectors */
 @media (max-height: 800px) {
-  .slide-title-thuluth { font-size: 2.85rem; }
+  .slide-title-thuluth { font-size: 2.45rem; }
   .point-text { font-size: 1.48rem; }
   .point-gold-prefix { font-size: 1.48rem; }
   .point-number-rosette { width: 40px; height: 40px; min-width: 40px; }

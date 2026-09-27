@@ -245,7 +245,7 @@ export const SlideView: React.FC<SlideViewProps> = ({ slide, direction }) => {
                   filter: { duration: 0.6, delay: 0.15 },
                   textShadow: { repeat: Infinity, duration: 5, ease: "easeInOut" }
                 }}
-                className="slide-title-thuluth"
+                className="slide-title-thuluth qomra-font"
               >
                 {slide.title}
               </motion.h1>
