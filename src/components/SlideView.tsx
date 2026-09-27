@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { SlideItem } from '../data/slidesData';
-import { Sparkles } from 'lucide-react';
 
 interface SlideViewProps {
   slide: SlideItem;
@@ -210,17 +209,6 @@ export const SlideView: React.FC<SlideViewProps> = ({ slide, direction }) => {
           <div className="slide-grid">
             {/* Left Column: Enlarged Typography & Exactly 4-5 Concise Lines */}
             <div className="slide-content-col">
-              <motion.div
-                initial={{ opacity: 0, y: -12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="section-tag"
-                style={{ borderColor: slide.tagColor }}
-              >
-                <Sparkles size={16} style={{ display: 'inline', marginLeft: 6 }} />
-                {slide.badge}
-              </motion.div>
-
               {/* Title in Authentic Thuluth Calligraphy - Enlarged & Grand */}
               <motion.h1
                 initial={{ opacity: 0, y: -16, filter: 'blur(3px)' }}
