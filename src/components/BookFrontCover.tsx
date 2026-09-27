@@ -232,6 +232,11 @@ export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook }) =>
           {/* Top Royal Crown Arch */}
           <RoyalTopHeadpiece />
 
+          {/* Knowledge University Brain Watermark on Book Front Cover */}
+          <div className="cover-brain-watermark" aria-hidden="true">
+            <img src="/knowledge_brain_watermark.png" alt="Knowledge University Brain Watermark" />
+          </div>
+
           {/* Central Illumination & Calligraphic Title Area */}
           <div className="cover-center-content qomra-font">
             {/* Islamic Shamseh Seal with Scales of Justice */}
