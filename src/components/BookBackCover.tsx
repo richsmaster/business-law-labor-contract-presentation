@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RotateCcw, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { RotateCcw, ShieldCheck } from 'lucide-react';
 
 interface BookBackCoverProps {
   onReopenBook: () => void;
@@ -9,6 +9,7 @@ interface BookBackCoverProps {
 export const BookBackCover: React.FC<BookBackCoverProps> = ({ onReopenBook }) => {
   return (
     <motion.div
+      data-component="BookBackCover"
       initial={{ rotateY: 110, opacity: 0, x: 120 }}
       animate={{ 
         rotateY: 0, 
@@ -44,20 +45,7 @@ export const BookBackCover: React.FC<BookBackCoverProps> = ({ onReopenBook }) =>
               خاتمة دراسة إنهاء عقد العمل في قانون الأعمال
             </p>
 
-            <div className="closing-summary-box">
-              <div className="closing-point">
-                <CheckCircle2 size={18} color="#10b981" />
-                <span>تم استيفاء كافة محاور المبحث الثاني من الفصل الخامس.</span>
-              </div>
-              <div className="closing-point">
-                <CheckCircle2 size={18} color="#10b981" />
-                <span>تأصيل قانوني دقيق لموازنة حقوق العامل ورب العمل في التشريع العراقي.</span>
-              </div>
-              <div className="closing-point">
-                <CheckCircle2 size={18} color="#10b981" />
-                <span>تطبيق ميداني على بيئة الأعمال في أربيل وبغداد.</span>
-              </div>
-            </div>
+
 
             <div className="author-item" style={{ marginTop: '1.5rem' }}>
               <span className="author-role">إشراف وتوجيه:</span>
