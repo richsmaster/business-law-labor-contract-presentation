@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Scale } from 'lucide-react';
 
 interface BookFrontCoverProps {
@@ -196,6 +196,38 @@ const CalligraphicFlourish: React.FC = () => (
 export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook, language = 'ar' }) => {
   const isKurdish = language === 'ku';
 
+  // Interactive 3D Cursor Parallax & Depth
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { stiffness: 100, damping: 20, mass: 0.8 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  // Subtle 3D tilt for the book leather cover itself
+  const coverRotateX = useTransform(smoothY, [-0.5, 0.5], ['4deg', '-4deg']);
+  const coverRotateY = useTransform(smoothX, [-0.5, 0.5], ['-5deg', '5deg']);
+
+  // Amplified 3D floating & parallax for the background brain watermark
+  const brainRotateX = useTransform(smoothY, [-0.5, 0.5], ['14deg', '-14deg']);
+  const brainRotateY = useTransform(smoothX, [-0.5, 0.5], ['-18deg', '18deg']);
+  const brainTranslateX = useTransform(smoothX, [-0.5, 0.5], ['-30px', '30px']);
+  const brainTranslateY = useTransform(smoothY, [-0.5, 0.5], ['-20px', '20px']);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    const xPct = (e.clientX - rect.left) / rect.width - 0.5;
+    const yPct = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(xPct);
+    mouseY.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   return (
     <motion.div
       data-component="BookFrontCover"
@@ -212,10 +244,17 @@ export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook, lang
       <motion.div 
         className="book-leather-cover clickable-cover"
         onClick={onOpenBook}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          rotateX: coverRotateX,
+          rotateY: coverRotateY,
+          transformStyle: 'preserve-3d',
+        }}
         whileHover={{ 
-          scale: 1.012, 
+          scale: 1.015, 
           borderColor: '#ffd700',
-          boxShadow: 'inset 0 0 85px rgba(0, 0, 0, 0.98), inset 0 0 50px rgba(212, 175, 55, 0.55), 0 0 55px rgba(212, 175, 55, 0.35)' 
+          boxShadow: 'inset 0 0 95px rgba(0, 0, 0, 0.98), inset 0 0 55px rgba(212, 175, 55, 0.6), 0 30px 90px rgba(0, 0, 0, 0.95), 0 0 70px rgba(212, 175, 55, 0.45)' 
         }}
         whileTap={{ scale: 0.992 }}
         transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1] }}
@@ -235,10 +274,55 @@ export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook, lang
           {/* Top Royal Crown Arch */}
           <RoyalTopHeadpiece />
 
-          {/* Knowledge University Brain Watermark on Book Front Cover */}
-          <div className="cover-brain-watermark" aria-hidden="true">
-            <img src="/knowledge_brain_watermark.png" alt="Knowledge University Brain Watermark" />
-          </div>
+          {/* 3D Animated Knowledge University Brain Background Watermark (صورة خلفية ثلاثية الأبعاد متحركة) */}
+          <motion.div 
+            className="cover-brain-watermark-3d" 
+            aria-hidden="true"
+            style={{
+              x: brainTranslateX,
+              y: brainTranslateY,
+              rotateX: brainRotateX,
+              rotateY: brainRotateY,
+              transformStyle: 'preserve-3d',
+            }}
+          >
+            <motion.div
+              className="brain-3d-floating-mesh"
+              animate={{
+                rotateZ: [-2, 3, -3, 2, -2],
+                scale: [1, 1.045, 0.985, 1.03, 1],
+                y: [-7, 7, -5, 6, -7],
+              }}
+              transition={{
+                duration: 8.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              {/* Luminous Golden 3D Halo Aura */}
+              <div className="brain-3d-halo"></div>
+
+              {/* 3D Rotating Glowing Brain Graphic */}
+              <motion.img 
+                src="/knowledge_brain_watermark.png" 
+                alt="Knowledge University Brain 3D Background"
+                className="brain-3d-img"
+                animate={{
+                  filter: [
+                    "drop-shadow(0 0 25px rgba(212, 175, 55, 0.45)) drop-shadow(0 0 50px rgba(212, 175, 55, 0.25))",
+                    "drop-shadow(0 0 45px rgba(255, 235, 160, 0.75)) drop-shadow(0 0 85px rgba(212, 175, 55, 0.5))",
+                    "drop-shadow(0 0 25px rgba(212, 175, 55, 0.45)) drop-shadow(0 0 50px rgba(212, 175, 55, 0.25))"
+                  ],
+                  opacity: [0.15, 0.24, 0.15]
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+            </motion.div>
+          </motion.div>
 
           {/* Central Illumination & Calligraphic Title Area */}
           <div className={`cover-center-content ${isKurdish ? 'jazeera-font' : 'qomra-font'}`}>
