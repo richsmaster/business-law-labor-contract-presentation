@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Scale, BookOpen, Award, Sparkles, Feather, ShieldCheck } from 'lucide-react';
+import { Scale } from 'lucide-react';
 
 interface BookFrontCoverProps {
   onOpenBook: () => void;
@@ -112,8 +112,22 @@ const RoyalTopHeadpiece: React.FC = () => (
 );
 
 // Calligraphic Medallion Seal (شمسة إسلامية مذهبة مع ميزان العدالة)
+// Calligraphic Medallion Seal (شمسة إسلامية مذهبة مع ميزان العدالة)
 const RoyalShamsehSeal: React.FC = () => (
-  <div className="cover-shamseh-seal">
+  <motion.div 
+    className="cover-shamseh-seal"
+    initial={{ scale: 0.88, opacity: 0 }}
+    animate={{ 
+      scale: 1, 
+      opacity: 1,
+      y: [0, -5, 0]
+    }}
+    transition={{ 
+      scale: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+      opacity: { duration: 0.7 },
+      y: { repeat: Infinity, duration: 4.5, ease: "easeInOut" }
+    }}
+  >
     <svg viewBox="0 0 90 90" className="shamseh-svg">
       <defs>
         <linearGradient id="shamsehGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -139,26 +153,49 @@ const RoyalShamsehSeal: React.FC = () => (
       {/* Inner Decorative Circle */}
       <circle cx="45" cy="45" r="23" fill="rgba(212, 175, 55, 0.18)" stroke="url(#shamsehGoldGrad)" strokeWidth="1.2" />
     </svg>
-    <div className="shamseh-icon-overlay">
+    <motion.div 
+      className="shamseh-icon-overlay"
+      animate={{ rotate: [-2, 2, -2] }}
+      transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+    >
       <Scale size={26} color="#fff8e7" />
-    </div>
-  </div>
+    </motion.div>
+  </motion.div>
 );
 
 // Royal Calligraphic Flourish Divider (فاصل تذهيبي للمخطوطات)
 const CalligraphicFlourish: React.FC = () => (
-  <div className="calligraphic-flourish">
+  <motion.div 
+    className="calligraphic-flourish"
+    initial={{ opacity: 0, scaleX: 0.85 }}
+    animate={{ opacity: 1, scaleX: 1 }}
+    transition={{ duration: 0.8, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+  >
     <span className="flourish-line right"></span>
     <span className="flourish-leaf">✤</span>
-    <span className="flourish-diamond">❖</span>
+    <motion.span 
+      className="flourish-diamond"
+      animate={{ 
+        scale: [1, 1.25, 1],
+        filter: [
+          "drop-shadow(0 0 6px rgba(212, 175, 55, 0.6))",
+          "drop-shadow(0 0 14px rgba(255, 235, 160, 0.95))",
+          "drop-shadow(0 0 6px rgba(212, 175, 55, 0.6))"
+        ]
+      }}
+      transition={{ repeat: Infinity, duration: 3.6, ease: "easeInOut" }}
+    >
+      ❖
+    </motion.span>
     <span className="flourish-leaf">✤</span>
     <span className="flourish-line left"></span>
-  </div>
+  </motion.div>
 );
 
 export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook }) => {
   return (
     <motion.div
+      data-component="BookFrontCover"
       initial={{ scale: 0.94, opacity: 0, rotateY: 15 }}
       animate={{ scale: 1, opacity: 1, rotateY: 0 }}
       exit={{ 
@@ -169,7 +206,18 @@ export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook }) =>
       }}
       className="book-cover-wrapper"
     >
-      <div className="book-leather-cover">
+      <motion.div 
+        className="book-leather-cover clickable-cover"
+        onClick={onOpenBook}
+        whileHover={{ 
+          scale: 1.012, 
+          borderColor: '#ffd700',
+          boxShadow: 'inset 0 0 85px rgba(0, 0, 0, 0.98), inset 0 0 50px rgba(212, 175, 55, 0.55), 0 0 55px rgba(212, 175, 55, 0.35)' 
+        }}
+        whileTap={{ scale: 0.992 }}
+        transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1] }}
+        title="انقر على الكتاب للفتح وبدء تصفح التقرير الأكاديمي"
+      >
         {/* Ornate Gold Foil Interior Border */}
         <div className="book-ornate-border">
           {/* Authentic Illuminated Corner Ornaments Integrated directly into Frame */}
@@ -184,88 +232,83 @@ export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook }) =>
           {/* Top Royal Crown Arch */}
           <RoyalTopHeadpiece />
 
-          {/* Top Academic Course Cartouche */}
-          <div className="cover-header-cartouche">
-            <Sparkles size={15} color="var(--gold-bright)" />
-            <span className="cartouche-text" dir="rtl">
-              مقرر قانون الأعمال الأكاديمي <span className="cartouche-en">(Business Law)</span>
-            </span>
-            <Sparkles size={15} color="var(--gold-bright)" />
-          </div>
-
           {/* Central Illumination & Calligraphic Title Area */}
-          <div className="cover-center-content">
+          <div className="cover-center-content qomra-font">
             {/* Islamic Shamseh Seal with Scales of Justice */}
             <RoyalShamsehSeal />
 
             {/* Illuminated Title Frame & Grand Calligraphic Title */}
-            <div className="cover-title-container">
-              <h1 className="thuluth-cover-title">
-                <span className="title-row-1">إنهاء عقد العمل</span>
-                <span className="title-row-2">بإرادة أحد طرفيه أو كليهما</span>
+            <motion.div 
+              className="cover-title-container"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <h1 className="thuluth-cover-title qomra-font">
+                <motion.span 
+                  className="title-row-1"
+                  initial={{ opacity: 0, y: 16, filter: 'blur(3px)' }}
+                  animate={{ 
+                    opacity: 1, 
+                    y: 0, 
+                    filter: 'blur(0px)',
+                    textShadow: [
+                      "0 4px 20px rgba(0, 0, 0, 0.95), 0 0 35px rgba(212, 175, 55, 0.7), 0 0 70px rgba(212, 175, 55, 0.35)",
+                      "0 4px 24px rgba(0, 0, 0, 0.95), 0 0 55px rgba(255, 235, 160, 0.95), 0 0 95px rgba(212, 175, 55, 0.65)",
+                      "0 4px 20px rgba(0, 0, 0, 0.95), 0 0 35px rgba(212, 175, 55, 0.7), 0 0 70px rgba(212, 175, 55, 0.35)"
+                    ]
+                  }}
+                  transition={{ 
+                    opacity: { duration: 0.7, delay: 0.2 },
+                    y: { duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
+                    filter: { duration: 0.7, delay: 0.2 },
+                    textShadow: { repeat: Infinity, duration: 4.8, ease: "easeInOut" }
+                  }}
+                >
+                  إنهاء عقد العمل
+                </motion.span>
+                <motion.span 
+                  className="title-row-2"
+                  initial={{ opacity: 0, y: 12, filter: 'blur(3px)' }}
+                  animate={{ 
+                    opacity: 1, 
+                    y: 0, 
+                    filter: 'blur(0px)',
+                    textShadow: [
+                      "0 4px 18px rgba(0, 0, 0, 0.95), 0 0 28px rgba(212, 175, 55, 0.6)",
+                      "0 4px 20px rgba(0, 0, 0, 0.95), 0 0 45px rgba(252, 232, 166, 0.85)",
+                      "0 4px 18px rgba(0, 0, 0, 0.95), 0 0 28px rgba(212, 175, 55, 0.6)"
+                    ]
+                  }}
+                  transition={{ 
+                    opacity: { duration: 0.7, delay: 0.35 },
+                    y: { duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] },
+                    filter: { duration: 0.7, delay: 0.35 },
+                    textShadow: { repeat: Infinity, duration: 4.8, ease: "easeInOut", delay: 0.8 }
+                  }}
+                >
+                  بإرادة أحد طرفيه أو كليهما
+                </motion.span>
               </h1>
-            </div>
+            </motion.div>
 
             {/* Royal Calligraphic Flourish Divider */}
             <CalligraphicFlourish />
-
-            {/* Subtitle & Legal Scope Cartouche */}
-            <div className="cover-sub-badge">
-              <ShieldCheck size={16} color="var(--gold-bright)" />
-              <span className="cover-sub-text">
-                المبحث الثاني من الفصل الخامس (ص 324 - 366) • قانون العمل العراقي رقم (37) والفقه المقارن
-              </span>
-            </div>
-
-            {/* Academic Credential & Authors Box - Centered & Perfectly Proportioned */}
-            <div className="cover-authors-box">
-              <div className="author-item">
-                <div className="author-badge-icon">
-                  <Award size={18} color="var(--gold-bright)" />
-                </div>
-                <div className="author-text-col">
-                  <span className="author-role">إشراف وتدريس:</span>
-                  <span className="author-name">م.م. هالة رحمن (Ass.L. Hala Rahman)</span>
-                </div>
-              </div>
-
-              <div className="author-divider"></div>
-
-              <div className="author-item">
-                <div className="author-badge-icon">
-                  <Feather size={18} color="var(--gold-bright)" />
-                </div>
-                <div className="author-text-col">
-                  <span className="author-role">المرجع العلمي المعتمد:</span>
-                  <span className="author-name">د. عدنان العابد & د. يوسف إلياس (جامعة بغداد)</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Radiant Gold Open Book Button */}
-            <motion.button
-              whileHover={{ 
-                scale: 1.04, 
-                boxShadow: "0 0 45px rgba(212, 175, 55, 0.95)",
-                filter: "brightness(1.15)"
-              }}
-              whileTap={{ scale: 0.96 }}
-              onClick={onOpenBook}
-              className="btn-open-book"
-            >
-              <BookOpen size={22} />
-              <span>افتح الكتاب لتصفح التقرير الأكاديمي</span>
-            </motion.button>
           </div>
 
           {/* Bottom Academic Year & Seal */}
-          <div className="cover-bottom-year">
+          <motion.div 
+            className="cover-bottom-year"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.55 }}
+          >
             <span style={{ color: 'var(--gold-bright)', marginLeft: 8 }}>❖</span>
             العام الأكاديمي 2026 — كلية القانون / إدارة الأعمال — أربيل / بغداد
             <span style={{ color: 'var(--gold-bright)', marginRight: 8 }}>❖</span>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* 3D Gilded Book Pages Edge */}
       <div className="book-pages-gilded-edge"></div>

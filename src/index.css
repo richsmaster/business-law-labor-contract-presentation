@@ -461,34 +461,37 @@ body {
   padding: 0.8rem 4rem;
   background: transparent;
   border-radius: 24px;
+  font-family: var(--font-qomra) !important;
 }
 
 .thuluth-cover-title {
-  font-family: var(--font-thuluth);
+  font-family: var(--font-qomra) !important;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.35rem;
-  font-weight: 700;
+  gap: 0.4rem;
+  font-weight: 800;
   text-align: center;
 }
 
 .title-row-1 {
-  font-family: var(--font-thuluth);
-  font-size: 4.4rem;
-  line-height: 1.25;
+  font-family: var(--font-qomra) !important;
+  font-size: 3.65rem;
+  font-weight: 900;
+  line-height: 1.28;
   color: #ffffff;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 0 40px rgba(212, 175, 55, 0.75), 0 0 85px rgba(212, 175, 55, 0.4);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .title-row-2 {
-  font-family: var(--font-thuluth);
-  font-size: 3.6rem;
-  line-height: 1.25;
+  font-family: var(--font-qomra) !important;
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 1.35;
   color: var(--gold-bright);
   text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95), 0 0 32px rgba(212, 175, 55, 0.65);
-  letter-spacing: 0.8px;
+  letter-spacing: 0.3px;
 }
 
 /* Calligraphic Flourish */
