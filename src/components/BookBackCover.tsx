@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck } from 'lucide-react';
 
 interface BookBackCoverProps {
   onReopenBook?: () => void;
@@ -34,10 +33,6 @@ export const BookBackCover: React.FC<BookBackCoverProps> = ({ onReopenBook }) =>
 
         <div className="book-ornate-border">
           <div className="cover-center-content">
-            <div className="gold-medallion">
-              <ShieldCheck size={48} color="#d4af37" />
-            </div>
-
             <h1 className="thuluth-cover-title" style={{ fontSize: '2.5rem' }}>
               تم بحمد الله وتوفيقه
             </h1>
