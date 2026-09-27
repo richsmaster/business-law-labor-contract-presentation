@@ -409,10 +409,6 @@ export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook, lang
             </div>
             <div className="cover-footer-subline">
               <span>{isKurdish ? "سەرپەرشتی: م.ی. هالة رحمن (Ass.L. Hala Rahman)" : "إشراف الأستاذة: م.م. هالة رحمن (Ass.L. Hala Rahman)"}</span>
-              <span className="footer-bullet">•</span>
-              <span>{isKurdish ? "ساڵی ئەکادیمی 2025 - 2026" : "العام الأكاديمي 2025 - 2026"}</span>
-              <span className="footer-bullet">•</span>
-              <span>{isKurdish ? "هەولێر - کوردستانی عێراق" : "أربيل - كوردستان العراق"}</span>
             </div>
           </motion.div>
         </div>
