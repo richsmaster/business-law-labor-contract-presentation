@@ -668,13 +668,72 @@ body {
 }
 
 .cover-bottom-year {
-  font-size: 0.92rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+  font-family: var(--font-qomra);
+  width: 100%;
+  z-index: 10;
+}
+
+.cover-footer-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.footer-tag-univ,
+.footer-tag-dept,
+.footer-tag-course {
+  background: rgba(14, 14, 14, 0.9);
+  border: 1.2px solid rgba(212, 175, 55, 0.45);
+  border-radius: 9px;
+  padding: 0.28rem 0.95rem;
+  font-size: 0.96rem;
+  font-weight: 700;
   color: var(--gold-bright);
-  font-weight: 800;
-  margin-top: 2px;
-  opacity: 0.95;
-  letter-spacing: 0.4px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.75), 0 0 12px rgba(212, 175, 55, 0.2);
+  display: flex;
+  align-items: center;
   white-space: nowrap;
+}
+
+.footer-tag-dept {
+  color: #ffffff;
+  border-color: rgba(255, 235, 160, 0.5);
+  background: rgba(22, 22, 22, 0.92);
+}
+
+.footer-tag-course {
+  color: var(--gold-bright);
+}
+
+.footer-diamond {
+  color: var(--gold-primary);
+  margin-left: 6px;
+  font-size: 0.8rem;
+}
+
+.cover-footer-subline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
+  flex-wrap: wrap;
+}
+
+.footer-bullet {
+  color: var(--gold-primary);
+  font-size: 0.9rem;
 }
 
 /* ======================================================== */

@@ -301,16 +301,32 @@ export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook }) =>
             <CalligraphicFlourish />
           </div>
 
-          {/* Bottom Academic Year & Seal */}
+          {/* Bottom Academic Year & Complete Institutional Info */}
           <motion.div 
             className="cover-bottom-year"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.55 }}
           >
-            <span style={{ color: 'var(--gold-bright)', marginLeft: 8 }}>❖</span>
-            العام الأكاديمي 2026 — كلية القانون / إدارة الأعمال — أربيل / بغداد
-            <span style={{ color: 'var(--gold-bright)', marginRight: 8 }}>❖</span>
+            <div className="cover-footer-badges">
+              <span className="footer-tag-univ">
+                <span className="footer-diamond">❖</span>
+                جامعة نولج — Knowledge University
+              </span>
+              <span className="footer-tag-dept">
+                قسم التسويق الرقمي (Digital Marketing)
+              </span>
+              <span className="footer-tag-course">
+                مقرر قانون الأعمال (Business Law)
+              </span>
+            </div>
+            <div className="cover-footer-subline">
+              <span>إشراف الأستاذة: م.م. هالة رحمن (Ass.L. Hala Rahman)</span>
+              <span className="footer-bullet">•</span>
+              <span>العام الأكاديمي 2025 - 2026</span>
+              <span className="footer-bullet">•</span>
+              <span>أربيل - كوردستان العراق</span>
+            </div>
           </motion.div>
         </div>
       </motion.div>
