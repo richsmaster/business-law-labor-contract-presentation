@@ -61,10 +61,6 @@ export const BookBackCover: React.FC<BookBackCoverProps> = ({ onReopenBook }) =>
 
 
           </div>
-
-          <div className="cover-bottom-year">
-            جميع الحقوق محفوظة © 2026 — كلية القانون / إدارة الأعمال
-          </div>
         </div>
       </div>
 
