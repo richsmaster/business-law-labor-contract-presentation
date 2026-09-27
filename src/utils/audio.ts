@@ -15,87 +15,92 @@ function getAudioContext(): AudioContext {
 }
 
 /**
- * Synthesizes an authentic acoustic sound of turning or opening an antique parchment page.
- * @param isCover If true, produces a deeper, heavier sound of opening a leather book cover.
+ * Synthesizes a slow, natural, gentle paper page-turn sound (صوت تصفح ورقة بطيء وناعم).
+ * Completely eliminates any bass impact/thud/strike, focusing purely on organic paper friction and air whisper.
+ * 
+ * @param isCover If true, produces a slightly deeper, slower leather cover opening sound.
  */
 export function playPageTurnSound(isCover: boolean = false): void {
   try {
     const ctx = getAudioContext();
     const now = ctx.currentTime;
-    const duration = isCover ? 0.58 : 0.42;
-
-    // 1. Noise buffer: generates organic paper friction texture
+    
+    // Slow, soothing page turn duration (0.88s for slide page, 1.08s for book cover)
+    const duration = isCover ? 1.08 : 0.88;
     const sampleRate = ctx.sampleRate;
     const bufferSize = Math.floor(sampleRate * duration);
     const noiseBuffer = ctx.createBuffer(1, bufferSize, sampleRate);
     const output = noiseBuffer.getChannelData(0);
 
-    // Generate textured noise with gentle parchment grain and micro-flutter
+    // Generate soft, textured paper fiber noise with gentle undulating friction
+    let lastNoise = 0;
     for (let i = 0; i < bufferSize; i++) {
       const progress = i / bufferSize;
-      // Multi-frequency flutter envelope
-      const flutter = 1 + 0.28 * Math.sin(progress * Math.PI * 18);
-      const decay = Math.sin(progress * Math.PI); // Smooth rise and fall
-      output[i] = (Math.random() * 2 - 1) * decay * flutter;
+      
+      // Soft organic envelope: smooth bell curve with gentle rise and long gradual tail
+      const envelope = Math.pow(Math.sin(progress * Math.PI), 1.4);
+      
+      // Multi-layered paper flutter & micro-crinkle texture
+      const flutter = 1 + 0.16 * Math.sin(progress * Math.PI * 10) + 0.08 * Math.sin(progress * Math.PI * 22);
+      
+      // Pink-filtered noise (smoother than raw white noise, eliminates harshness and strikes)
+      const white = Math.random() * 2 - 1;
+      const pinkish = (lastNoise * 0.74) + (white * 0.26);
+      lastNoise = pinkish;
+
+      output[i] = pinkish * envelope * flutter;
     }
 
-    const whiteNoise = ctx.createBufferSource();
-    whiteNoise.buffer = noiseBuffer;
+    const noiseSource = ctx.createBufferSource();
+    noiseSource.buffer = noiseBuffer;
 
-    // 2. Sweeping bandpass filter: captures the swoosh of paper moving through air
-    const bandpass = ctx.createBiquadFilter();
-    bandpass.type = 'bandpass';
-    bandpass.Q.setValueAtTime(isCover ? 1.6 : 2.4, now);
-
-    if (isCover) {
-      // Deeper leather binding opening
-      bandpass.frequency.setValueAtTime(380, now);
-      bandpass.frequency.exponentialRampToValueAtTime(1250, now + duration * 0.38);
-      bandpass.frequency.exponentialRampToValueAtTime(280, now + duration);
-    } else {
-      // Crisp parchment leaf turn
-      bandpass.frequency.setValueAtTime(750, now);
-      bandpass.frequency.exponentialRampToValueAtTime(3200, now + duration * 0.32);
-      bandpass.frequency.exponentialRampToValueAtTime(600, now + duration);
-    }
-
-    // 3. Highpass filter: eliminates rumble while preserving crisp paper edges
+    // 1. Highpass filter: completely cuts all low frequencies (blocks all bass thuds / strike sounds)
     const highpass = ctx.createBiquadFilter();
     highpass.type = 'highpass';
-    highpass.frequency.setValueAtTime(isCover ? 140 : 320, now);
+    highpass.frequency.setValueAtTime(isCover ? 280 : 380, now);
+    highpass.Q.setValueAtTime(0.7, now);
 
-    // 4. Amplitude gain envelope
-    const noiseGain = ctx.createGain();
-    const peakVolume = isCover ? 0.36 : 0.26;
-    noiseGain.gain.setValueAtTime(0.0001, now);
-    noiseGain.gain.linearRampToValueAtTime(peakVolume, now + 0.035);
-    noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+    // 2. Sweeping bandpass filter: simulates the natural acoustic arc of paper gliding through air
+    const bandpass = ctx.createBiquadFilter();
+    bandpass.type = 'bandpass';
+    bandpass.Q.setValueAtTime(isCover ? 1.8 : 2.2, now);
 
-    // Connect noise pipeline
-    whiteNoise.connect(bandpass);
-    bandpass.connect(highpass);
-    highpass.connect(noiseGain);
-    noiseGain.connect(ctx.destination);
+    if (isCover) {
+      // Heavier leather/hardcover opening: deeper resonant glide
+      bandpass.frequency.setValueAtTime(450, now);
+      bandpass.frequency.exponentialRampToValueAtTime(1400, now + duration * 0.42);
+      bandpass.frequency.exponentialRampToValueAtTime(480, now + duration);
+    } else {
+      // Gentle, slow paper parchment turn: silky air sweep
+      bandpass.frequency.setValueAtTime(650, now);
+      bandpass.frequency.exponentialRampToValueAtTime(2100, now + duration * 0.38);
+      bandpass.frequency.exponentialRampToValueAtTime(700, now + duration);
+    }
 
-    // 5. Low-frequency displacement whoosh (gives the physical 3D weight of the page)
-    const whooshOsc = ctx.createOscillator();
-    whooshOsc.type = 'sine';
-    whooshOsc.frequency.setValueAtTime(isCover ? 110 : 160, now);
-    whooshOsc.frequency.exponentialRampToValueAtTime(isCover ? 40 : 65, now + duration);
+    // 3. Lowpass filter: softens any digital harshness for a velvety, tactile feel
+    const lowpass = ctx.createBiquadFilter();
+    lowpass.type = 'lowpass';
+    lowpass.frequency.setValueAtTime(isCover ? 3200 : 4200, now);
 
-    const whooshGain = ctx.createGain();
-    whooshGain.gain.setValueAtTime(0.0001, now);
-    whooshGain.gain.linearRampToValueAtTime(isCover ? 0.12 : 0.06, now + 0.04);
-    whooshGain.gain.exponentialRampToValueAtTime(0.0001, now + duration * 0.85);
+    // 4. Amplitude gain envelope: slow, gentle swell and natural whispering release (no sudden hit)
+    const gainNode = ctx.createGain();
+    const peakVolume = isCover ? 0.22 : 0.16; // Soft, comfortable listening volume
+    const attackTime = duration * 0.24; // ~0.21s smooth gradual swell (no punch/strike)
 
-    whooshOsc.connect(whooshGain);
-    whooshGain.connect(ctx.destination);
+    gainNode.gain.setValueAtTime(0.0001, now);
+    gainNode.gain.linearRampToValueAtTime(peakVolume, now + attackTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, now + duration);
 
-    // Start audio sources
-    whiteNoise.start(now);
-    whooshOsc.start(now);
-    whiteNoise.stop(now + duration);
-    whooshOsc.stop(now + duration);
+    // Connect audio processing chain
+    noiseSource.connect(highpass);
+    highpass.connect(bandpass);
+    bandpass.connect(lowpass);
+    lowpass.connect(gainNode);
+    gainNode.connect(ctx.destination);
+
+    // Trigger audio
+    noiseSource.start(now);
+    noiseSource.stop(now + duration);
   } catch (err) {
     console.debug('Page turn audio unavailable:', err);
   }
