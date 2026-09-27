@@ -741,18 +741,7 @@ body {
 }
 
 .section-tag {
-  align-self: flex-start;
-  padding: 0.4rem 1.25rem;
-  border-radius: 9px;
-  font-size: 1.05rem;
-  font-weight: 800;
-  background: rgba(212, 175, 55, 0.2);
-  border: 1.5px solid var(--gold-primary);
-  color: var(--gold-bright);
-  font-family: var(--font-qomra);
-  box-shadow: 0 0 18px rgba(212, 175, 55, 0.25);
-  display: flex;
-  align-items: center;
+  display: none !important;
 }
 
 /* THULUTH TITLE - BIGGER, MAJESTIC, ROYAL */
