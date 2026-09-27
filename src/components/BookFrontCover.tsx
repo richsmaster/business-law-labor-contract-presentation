@@ -4,6 +4,7 @@ import { Scale } from 'lucide-react';
 
 interface BookFrontCoverProps {
   onOpenBook: () => void;
+  language?: 'ar' | 'ku';
 }
 
 // Royal Illuminated Islamic Corner Arabesque (زخرفة تذهيب ركنية أندلسية متصلة)
@@ -192,7 +193,9 @@ const CalligraphicFlourish: React.FC = () => (
   </motion.div>
 );
 
-export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook }) => {
+export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook, language = 'ar' }) => {
+  const isKurdish = language === 'ku';
+
   return (
     <motion.div
       data-component="BookFrontCover"
@@ -216,7 +219,7 @@ export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook }) =>
         }}
         whileTap={{ scale: 0.992 }}
         transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1] }}
-        title="انقر على الكتاب للفتح وبدء تصفح التقرير الأكاديمي"
+        title={isKurdish ? "کرتە لەسەر کتێبەکە بکە بۆ کردنەوە و دەستپێکردنی خوێندنەوە" : "انقر على الكتاب للفتح وبدء تصفح التقرير الأكاديمي"}
       >
         {/* Ornate Gold Foil Interior Border */}
         <div className="book-ornate-border">
@@ -238,7 +241,7 @@ export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook }) =>
           </div>
 
           {/* Central Illumination & Calligraphic Title Area */}
-          <div className="cover-center-content qomra-font">
+          <div className={`cover-center-content ${isKurdish ? 'jazeera-font' : 'qomra-font'}`}>
             {/* Islamic Shamseh Seal with Scales of Justice */}
             <RoyalShamsehSeal />
 
@@ -249,7 +252,7 @@ export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook }) =>
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h1 className="thuluth-cover-title qomra-font">
+              <h1 className={`thuluth-cover-title ${isKurdish ? 'jazeera-font' : 'qomra-font'}`}>
                 <motion.span 
                   className="title-row-1"
                   initial={{ opacity: 0, y: 16, filter: 'blur(3px)' }}
@@ -270,7 +273,7 @@ export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook }) =>
                     textShadow: { repeat: Infinity, duration: 4.8, ease: "easeInOut" }
                   }}
                 >
-                  إنهاء عقد العمل
+                  {isKurdish ? "کۆتاییهێنان بە گرێبەستی کار" : "إنهاء عقد العمل"}
                 </motion.span>
                 <motion.span 
                   className="title-row-2"
@@ -292,7 +295,7 @@ export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook }) =>
                     textShadow: { repeat: Infinity, duration: 4.8, ease: "easeInOut", delay: 0.8 }
                   }}
                 >
-                  بإرادة أحد طرفيه أو كليهما
+                  {isKurdish ? "بە ویستی یەکێک لە لایەنەکان یان هەردووکیان" : "بإرادة أحد طرفيه أو كليهما"}
                 </motion.span>
               </h1>
             </motion.div>
@@ -311,21 +314,21 @@ export const BookFrontCover: React.FC<BookFrontCoverProps> = ({ onOpenBook }) =>
             <div className="cover-footer-badges">
               <span className="footer-tag-univ">
                 <span className="footer-diamond">❖</span>
-                جامعة نولج — Knowledge University
+                {isKurdish ? "زانکۆی نۆلج — Knowledge University" : "جامعة نولج — Knowledge University"}
               </span>
               <span className="footer-tag-dept">
-                قسم التسويق الرقمي (Digital Marketing)
+                {isKurdish ? "بەشی بازاڕگەریی دیجیتاڵی (Digital Marketing)" : "قسم التسويق الرقمي (Digital Marketing)"}
               </span>
               <span className="footer-tag-course">
-                مقرر قانون الأعمال (Business Law)
+                {isKurdish ? "بابەتی یاسای کار (Business Law)" : "مقرر قانون الأعمال (Business Law)"}
               </span>
             </div>
             <div className="cover-footer-subline">
-              <span>إشراف الأستاذة: م.م. هالة رحمن (Ass.L. Hala Rahman)</span>
+              <span>{isKurdish ? "سەرپەرشتی: م.ی. هالة رحمن (Ass.L. Hala Rahman)" : "إشراف الأستاذة: م.م. هالة رحمن (Ass.L. Hala Rahman)"}</span>
               <span className="footer-bullet">•</span>
-              <span>العام الأكاديمي 2025 - 2026</span>
+              <span>{isKurdish ? "ساڵی ئەکادیمی 2025 - 2026" : "العام الأكاديمي 2025 - 2026"}</span>
               <span className="footer-bullet">•</span>
-              <span>أربيل - كوردستان العراق</span>
+              <span>{isKurdish ? "هەولێر - کوردستانی عێراق" : "أربيل - كوردستان العراق"}</span>
             </div>
           </motion.div>
         </div>

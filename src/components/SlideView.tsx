@@ -5,6 +5,7 @@ import { SlideItem } from '../data/slidesData';
 interface SlideViewProps {
   slide: SlideItem;
   direction: number;
+  language?: 'ar' | 'ku';
 }
 
 // Ultra-Luxurious Royal Islamic Arabesque Pattern Component
@@ -129,7 +130,11 @@ const CornerFiligree: React.FC<{ position: 'top-right' | 'top-left' | 'bottom-ri
   </svg>
 );
 
-export const SlideView: React.FC<SlideViewProps> = ({ slide, direction }) => {
+export const SlideView: React.FC<SlideViewProps> = ({ slide, direction, language = 'ar' }) => {
+  const isKurdish = language === 'ku';
+  const currentTitle = isKurdish ? (slide.titleKu || slide.title) : slide.title;
+  const currentPoints = isKurdish ? (slide.pointsKu || slide.points) : slide.points;
+
   // Ultra-Smooth 3D Page Fold / Page Flip Transition (طية صفحة كتاب ثلاثية الأبعاد سلسة وفخمة)
   const pageFoldVariants: Variants = {
     initial: (dir: number) => ({
@@ -216,7 +221,7 @@ export const SlideView: React.FC<SlideViewProps> = ({ slide, direction }) => {
           <div className="slide-grid">
             {/* Left Column: Enlarged Typography & Exactly 4-5 Concise Lines */}
             <div className="slide-content-col">
-              {/* Title in Authentic Thuluth Calligraphy - Enlarged & Grand */}
+              {/* Title in Authentic Thuluth/Qomra (Arabic) or AlJazeera (Kurdish) */}
               <motion.h1
                 initial={{ opacity: 0, y: -16, filter: 'blur(3px)' }}
                 animate={{ 
@@ -235,14 +240,14 @@ export const SlideView: React.FC<SlideViewProps> = ({ slide, direction }) => {
                   filter: { duration: 0.6, delay: 0.15 },
                   textShadow: { repeat: Infinity, duration: 5, ease: "easeInOut" }
                 }}
-                className="slide-title-thuluth qomra-font"
+                className={`slide-title-thuluth ${isKurdish ? 'jazeera-font' : 'qomra-font'}`}
               >
-                {slide.title}
+                {currentTitle}
               </motion.h1>
 
-              {/* Exactly 4 to 5 Concise Bullet Points in Qomra Font - Enlarged & High Legibility */}
+              {/* Exactly 4 to 5 Concise Bullet Points in Qomra / Al Jazeera Font */}
               <div className="points-list">
-                {slide.points.map((point, index) => {
+                {currentPoints.map((point, index) => {
                   const colonIndex = point.indexOf(':');
                   const hasPrefix = colonIndex !== -1 && colonIndex < 35;
                   const prefix = hasPrefix ? point.substring(0, colonIndex + 1) : '';
@@ -261,7 +266,7 @@ export const SlideView: React.FC<SlideViewProps> = ({ slide, direction }) => {
                         </svg>
                         <span className="point-digit">{index + 1}</span>
                       </div>
-                      <div className="point-text qomra-font">
+                      <div className={`point-text ${isKurdish ? 'jazeera-font' : 'qomra-font'}`}>
                         {hasPrefix ? (
                           <>
                             <strong className="point-gold-prefix">{prefix}</strong>

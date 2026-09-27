@@ -4,7 +4,7 @@ import { SlideView } from './components/SlideView';
 import { BookFrontCover } from './components/BookFrontCover';
 import { BookBackCover } from './components/BookBackCover';
 import { AnimatePresence } from 'framer-motion';
-import { Layers } from 'lucide-react';
+import { Layers, Languages } from 'lucide-react';
 import { VisualEditor } from './components/VisualEditor';
 import { GoldenStarsCursor } from './components/GoldenStarsCursor';
 import { playPageTurnSound } from './utils/audio';
@@ -16,6 +16,7 @@ export const App: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [language, setLanguage] = useState<'ar' | 'ku'>('ar');
   const [isVisualEditorActive, setIsVisualEditorActive] = useState<boolean>(() => {
     try {
       return localStorage.getItem('visual-editor-enabled') === 'on';
@@ -23,6 +24,14 @@ export const App: React.FC = () => {
       return false;
     }
   });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-lang', language);
+  }, [language]);
+
+  const toggleLanguage = () => {
+    setLanguage((prev) => (prev === 'ar' ? 'ku' : 'ar'));
+  };
 
   useEffect(() => {
     const handleStateChange = (e: Event) => {
@@ -154,17 +163,37 @@ export const App: React.FC = () => {
       {/* Top Header Bar */}
       <header className="top-bar">
         <div className="top-bar-right">
-          <div className="slide-university-badge" title="Knowledge University — جامعة نولج">
+          <div 
+            className="slide-university-badge" 
+            title={language === 'ku' ? "Knowledge University — زانکۆی نۆلج" : "Knowledge University — جامعة نولج"}
+          >
             <img 
               src="/knowledge_logo_gold.png" 
               alt="Knowledge University Logo" 
               className="univ-logo-img" 
             />
-            <span className="univ-badge-text">Knowledge University — جامعة نولج</span>
+            <span className={`univ-badge-text ${language === 'ku' ? 'jazeera-font' : 'qomra-font'}`}>
+              {language === 'ku' ? "Knowledge University — زانکۆی نۆلج" : "Knowledge University — جامعة نولج"}
+            </span>
           </div>
         </div>
 
         <div className="top-bar-left">
+          {/* Translation Toggle Button (عربي / کوردی) with Al Jazeera font for Kurdish & Qomra for Arabic */}
+          <button
+            className={`btn-translate-lang ${language === 'ku' ? 'jazeera-font' : 'qomra-font'}`}
+            onClick={toggleLanguage}
+            title={language === 'ar' ? 'گۆڕین بۆ زمانی کوردی سۆرانی (بە فۆنتی خط الجزيرة)' : 'التبديل إلى اللغة العربية (بخط قمرة)'}
+          >
+            <Languages size={18} />
+            <span className="translate-label">
+              {language === 'ar' ? 'کوردی' : 'العربية'}
+            </span>
+            <span className="translate-badge-font">
+              {language === 'ar' ? 'خط الجزيرة' : 'خط قمرة'}
+            </span>
+          </button>
+
           <button
             className="btn-guide-link"
             style={{
@@ -189,19 +218,20 @@ export const App: React.FC = () => {
       <main className="slide-stage">
         <AnimatePresence mode="wait">
           {bookState === 'closed-front' && (
-            <BookFrontCover key="front-cover" onOpenBook={openBook} />
+            <BookFrontCover key={`front-cover-${language}`} language={language} onOpenBook={openBook} />
           )}
 
           {bookState === 'reading' && (
             <SlideView 
-              key={`slide-${currentSlide.id}`} 
+              key={`slide-${currentSlide.id}-${language}`} 
               slide={currentSlide} 
               direction={direction} 
+              language={language}
             />
           )}
 
           {bookState === 'closed-back' && (
-            <BookBackCover key="back-cover" onReopenBook={reopenBook} />
+            <BookBackCover key={`back-cover-${language}`} language={language} onReopenBook={reopenBook} />
           )}
         </AnimatePresence>
       </main>

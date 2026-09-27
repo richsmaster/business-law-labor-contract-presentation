@@ -94,6 +94,37 @@
   font-display: swap;
 }
 
+/* ======================================================== */
+/* AL JAZEERA FONT FAMILY (خط الجزيرة المعتمد للكردي)        */
+/* ======================================================== */
+@font-face {
+  font-family: 'AlJazeera';
+  src: url('/fonts/al-jazeera-kurdish.ttf') format('truetype'),
+       url('/fonts/al-jazeera-arabic.woff2') format('woff2'),
+       url('/fonts/al-jazeera-arabic.ttf') format('truetype'),
+       local('Nizar Jazeera'),
+       local('Al-Jazeera-Arabic'),
+       local('Al-Jazeera-Arabic-Regular'),
+       local('AlJazeera');
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AlJazeera';
+  src: url('/fonts/al-jazeera-kurdish.ttf') format('truetype'),
+       url('/fonts/al-jazeera-arabic.woff2') format('woff2'),
+       url('/fonts/al-jazeera-arabic.ttf') format('truetype'),
+       local('Nizar Jazeera'),
+       local('Al-Jazeera-Arabic-Bold'),
+       local('Al-Jazeera-Arabic'),
+       local('AlJazeera-Bold');
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg-dark: #06090e;
   --bg-card: rgba(16, 23, 38, 0.95);
@@ -110,6 +141,7 @@
   --text-muted: #94a3b8;
   --font-thuluth: 'Katibeh', 'DecoType Thuluth', 'Aldhabi', 'Amiri Quran', 'Traditional Arabic', serif;
   --font-qomra: 'QOMRAARABICITF-MEDIUM', 'Qomra Arabic', 'Qomra', 'Alexandria', 'Tajawal', sans-serif;
+  --font-jazeera: 'AlJazeera', 'Nizar Jazeera', 'Al-Jazeera-Arabic', 'Noto Sans Arabic', 'Vazirmatn', sans-serif;
 }
 
 * {
@@ -136,6 +168,28 @@ body {
 
 .qomra-font {
   font-family: var(--font-qomra);
+}
+
+.jazeera-font {
+  font-family: var(--font-jazeera) !important;
+}
+
+/* When Kurdish language is active, switch to Al Jazeera font while Arabic remains Qomra */
+[data-lang="ku"] body,
+[data-lang="ku"] .presentation-container,
+[data-lang="ku"] .qomra-font,
+[data-lang="ku"] .slide-title-thuluth,
+[data-lang="ku"] .thuluth-cover-title,
+[data-lang="ku"] .title-row-1,
+[data-lang="ku"] .title-row-2,
+[data-lang="ku"] .point-text,
+[data-lang="ku"] .point-gold-prefix,
+[data-lang="ku"] .cover-bottom-year,
+[data-lang="ku"] .univ-badge-text,
+[data-lang="ku"] .slide-badge-pill,
+[data-lang="ku"] .legal-ref-badge,
+[data-lang="ku"] .back-cover {
+  font-family: var(--font-jazeera) !important;
 }
 
 /* ======================================================== */
@@ -217,6 +271,44 @@ body {
   font-weight: 800;
   color: var(--gold-bright);
   box-shadow: inset 0 0 12px rgba(212, 175, 55, 0.2);
+}
+
+/* Translation Toggle Button (عربي / کوردی) */
+.btn-translate-lang {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.28) 0%, rgba(20, 20, 20, 0.95) 100%);
+  border: 1.5px solid var(--gold-bright);
+  color: #fffaf0;
+  padding: 0.46rem 1.25rem;
+  border-radius: 12px;
+  font-size: 0.98rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.8), 0 0 16px rgba(212, 175, 55, 0.35);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  user-select: none;
+  font-family: var(--font-qomra);
+}
+
+.btn-translate-lang:hover {
+  background: linear-gradient(135deg, rgba(255, 235, 160, 0.35) 0%, rgba(35, 30, 15, 0.98) 100%);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.55), 0 0 25px rgba(255, 235, 160, 0.5);
+  color: #ffffff;
+}
+
+.translate-badge-font {
+  font-size: 0.76rem;
+  padding: 2px 7px;
+  background: rgba(212, 175, 55, 0.22);
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 6px;
+  color: var(--gold-bright);
+  font-weight: 700;
+  letter-spacing: 0.2px;
 }
 
 /* External Guide / Report Action Link */
