@@ -290,11 +290,6 @@ export const SlideView: React.FC<SlideViewProps> = ({ slide, direction }) => {
                     }
                   }}
                 />
-                <div className="image-card-overlay">
-                  <div style={{ fontSize: '0.95rem', color: '#e2e8f0', fontWeight: 700 }} className="qomra-font">
-                    مقرر قانون الأعمال
-                  </div>
-                </div>
               </motion.div>
             </div>
           </div>
