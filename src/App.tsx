@@ -152,24 +152,37 @@ export const App: React.FC = () => {
   return (
     <div className="presentation-container">
       {/* Top Header Bar */}
-      <header className="top-bar" style={{ justifyContent: 'flex-end' }}>
-        <button
-          className="btn-guide-link"
-          style={{
-            background: isVisualEditorActive ? 'rgba(16, 185, 129, 0.22)' : 'rgba(255, 255, 255, 0.08)',
-            borderColor: isVisualEditorActive ? '#10b981' : 'rgba(212, 175, 55, 0.45)',
-            color: isVisualEditorActive ? '#34d399' : undefined,
-            boxShadow: isVisualEditorActive ? '0 0 15px rgba(16, 185, 129, 0.35)' : 'none',
-            cursor: 'pointer'
-          }}
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent('visualEditorToggle'));
-          }}
-          title="تشغيل/إيقاف المحرر المرئي وفاحص العناصر مثل clincsa (Ctrl+Shift+D)"
-        >
-          <Layers size={18} />
-          <span>{isVisualEditorActive ? 'المحرر المرئي (نشط)' : 'المحرر المرئي'}</span>
-        </button>
+      <header className="top-bar">
+        <div className="top-bar-right">
+          <div className="slide-university-badge" title="Knowledge University — جامعة نولج">
+            <img 
+              src="/knowledge_logo_gold.png" 
+              alt="Knowledge University Logo" 
+              className="univ-logo-img" 
+            />
+            <span className="univ-badge-text">Knowledge University — جامعة نولج</span>
+          </div>
+        </div>
+
+        <div className="top-bar-left">
+          <button
+            className="btn-guide-link"
+            style={{
+              background: isVisualEditorActive ? 'rgba(16, 185, 129, 0.22)' : 'rgba(255, 255, 255, 0.08)',
+              borderColor: isVisualEditorActive ? '#10b981' : 'rgba(212, 175, 55, 0.45)',
+              color: isVisualEditorActive ? '#34d399' : undefined,
+              boxShadow: isVisualEditorActive ? '0 0 15px rgba(16, 185, 129, 0.35)' : 'none',
+              cursor: 'pointer'
+            }}
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent('visualEditorToggle'));
+            }}
+            title="تشغيل/إيقاف المحرر المرئي وفاحص العناصر مثل clincsa (Ctrl+Shift+D)"
+          >
+            <Layers size={18} />
+            <span>{isVisualEditorActive ? 'المحرر المرئي (نشط)' : 'المحرر المرئي'}</span>
+          </button>
+        </div>
       </header>
 
       {/* Main 3D Book Stage */}

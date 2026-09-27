@@ -206,16 +206,6 @@ export const SlideView: React.FC<SlideViewProps> = ({ slide, direction }) => {
           <CornerFiligree position="bottom-right" />
           <CornerFiligree position="bottom-left" />
 
-          {/* Knowledge University Corner Logo on All Slides */}
-          <div className="slide-university-badge" title="Knowledge University — جامعة نولج">
-            <img 
-              src="/knowledge_logo_gold.png" 
-              alt="Knowledge University Logo" 
-              className="univ-logo-img" 
-            />
-            <span className="univ-badge-text">Knowledge University</span>
-          </div>
-
           {/* First Page (Slide 1) Brain Background Watermark */}
           {slide.id === 1 && (
             <div className="slide-bg-brain-watermark" aria-hidden="true">
