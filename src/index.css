@@ -815,12 +815,12 @@ body {
   max-height: 65vh;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.16;
+  opacity: 0.055;
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 0 45px rgba(212, 175, 55, 0.35));
-  animation: brainBreathing 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.15));
+  animation: brainBreathing 8s ease-in-out infinite;
 }
 
 .slide-bg-brain-watermark img {
@@ -839,12 +839,12 @@ body {
   height: 380px;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.13;
+  opacity: 0.05;
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 0 50px rgba(212, 175, 55, 0.45));
-  animation: brainBreathing 7s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.15));
+  animation: brainBreathing 9s ease-in-out infinite;
 }
 
 .cover-brain-watermark img {
@@ -856,12 +856,12 @@ body {
 @keyframes brainBreathing {
   0%, 100% {
     transform: translate(-50%, -50%) scale(1);
-    opacity: 0.14;
+    opacity: 0.045;
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.035);
-    opacity: 0.22;
-    filter: drop-shadow(0 0 65px rgba(255, 235, 160, 0.6));
+    transform: translate(-50%, -50%) scale(1.025);
+    opacity: 0.085;
+    filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.22));
   }
 }
 
