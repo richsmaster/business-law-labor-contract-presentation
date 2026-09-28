@@ -246,7 +246,7 @@ export const SlideView: React.FC<SlideViewProps> = ({ slide, direction, language
               </motion.h1>
 
               {/* Exactly 4 to 5 Concise Bullet Points in Qomra / Kurdish Font */}
-              <div className="points-list">
+              <div className={`points-list ${currentPoints.length <= 3 ? 'points-list-spacious' : ''}`}>
                 {currentPoints.map((point, index) => {
                   const colonIndex = point.indexOf(':');
                   const hasPrefix = colonIndex !== -1 && colonIndex < 35;
