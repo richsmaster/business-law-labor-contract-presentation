@@ -4,7 +4,6 @@ import { SlideView } from './components/SlideView';
 import { BookFrontCover } from './components/BookFrontCover';
 import { BookBackCover } from './components/BookBackCover';
 import { AnimatePresence } from 'framer-motion';
-import { Layers, Languages, Smartphone, FileDown } from 'lucide-react';
 import { VisualEditor } from './components/VisualEditor';
 import { GoldenStarsCursor } from './components/GoldenStarsCursor';
 import { playPageTurnSound } from './utils/audio';
@@ -17,30 +16,10 @@ export const App: React.FC = () => {
   const [direction, setDirection] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
   const [language, setLanguage] = useState<'ar' | 'ku'>('ar');
-  const [isVisualEditorActive, setIsVisualEditorActive] = useState<boolean>(() => {
-    try {
-      return localStorage.getItem('visual-editor-enabled') === 'on';
-    } catch {
-      return false;
-    }
-  });
 
   useEffect(() => {
     document.documentElement.setAttribute('data-lang', language);
   }, [language]);
-
-  const toggleLanguage = () => {
-    setLanguage((prev) => (prev === 'ar' ? 'ku' : 'ar'));
-  };
-
-  useEffect(() => {
-    const handleStateChange = (e: Event) => {
-      const detail = (e as CustomEvent).detail;
-      setIsVisualEditorActive(detail?.enabled ?? false);
-    };
-    window.addEventListener('visualEditorStateChange', handleStateChange);
-    return () => window.removeEventListener('visualEditorStateChange', handleStateChange);
-  }, []);
 
   const totalSlides = slides.length;
 
@@ -124,6 +103,8 @@ export const App: React.FC = () => {
         closeBookAtEnd();
       } else if (e.key.toLowerCase() === 'f') {
         toggleFullscreen();
+      } else if (e.key.toLowerCase() === 'l') {
+        setLanguage((prev) => (prev === 'ar' ? 'ku' : 'ar'));
       }
     };
 
@@ -176,74 +157,6 @@ export const App: React.FC = () => {
               {language === 'ku' ? "Knowledge University — زانکۆی نۆلج" : "Knowledge University — جامعة نولج"}
             </span>
           </div>
-        </div>
-
-        <div className="top-bar-left">
-          {/* Presentation Slides PDF (16:9 Original Layout) Download Button */}
-          <a
-            href="/عرض_سلايدات_قانون_الاعمال.pdf"
-            download="عرض_سلايدات_قانون_الاعمال.pdf"
-            className="btn-mobile-pdf-link"
-            title="تحميل سلايدات العرض التقديمي كاملة بالشكل الأفقي الأصلي العالي الدقة (PDF)"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.38) 0%, rgba(184, 134, 11, 0.22) 100%)',
-              borderColor: '#fce8a6',
-              boxShadow: '0 0 16px rgba(212, 175, 55, 0.35)'
-            }}
-          >
-            <Layers size={17} />
-            <span>PDF السلايدات</span>
-            <FileDown size={15} style={{ opacity: 0.85 }} />
-          </a>
-
-          {/* Mobile PDF Download Button */}
-          <a
-            href={language === 'ku' ? '/پێشکەشکردنی_سلايده‌كانی_یاسای_کار_بۆ_مۆبایل.pdf' : '/عرض_سلايدات_قانون_الاعمال_مخصص_للجوال.pdf'}
-            download={language === 'ku' ? 'یاسای_کار_سلايدەکان_مۆبایل.pdf' : 'عرض_سلايدات_قانون_الاعمال_للجوال.pdf'}
-            className="btn-mobile-pdf-link"
-            title={language === 'ku' ? 'دابەزاندنی فایلەکانی سلايد وەک PDF بە تایبەت بۆ مۆبایل' : 'تحميل سلايدات العرض كملف PDF مخصص تماماً لشاشات الجوال'}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Smartphone size={17} />
-            <span>{language === 'ku' ? 'PDF بۆ مۆبایل' : 'PDF للجوال'}</span>
-            <FileDown size={15} style={{ opacity: 0.8 }} />
-          </a>
-
-          {/* Translation Toggle Button (عربي / کوردی) with Noto Kurdish font for Kurdish & Qomra for Arabic */}
-          <button
-            className={`btn-translate-lang ${language === 'ku' ? 'kurdish-font' : 'qomra-font'}`}
-            onClick={toggleLanguage}
-            title={language === 'ar' ? 'گۆڕین بۆ زمانی کوردی سۆرانی (بە فۆنتی ستانداردی نۆتۆ)' : 'التبديل إلى اللغة العربية (بخط قمرة الملكي)'}
-          >
-            <Languages size={18} />
-            <span className="translate-label">
-              {language === 'ar' ? 'کوردی' : 'العربية'}
-            </span>
-            <span className="translate-badge-font">
-              {language === 'ar' ? 'فۆنتی نۆتۆ' : 'خط قمرة'}
-            </span>
-          </button>
-
-          <button
-            className="btn-guide-link"
-            style={{
-              background: isVisualEditorActive ? 'rgba(16, 185, 129, 0.22)' : 'rgba(255, 255, 255, 0.08)',
-              borderColor: isVisualEditorActive ? '#10b981' : 'rgba(212, 175, 55, 0.45)',
-              color: isVisualEditorActive ? '#34d399' : undefined,
-              boxShadow: isVisualEditorActive ? '0 0 15px rgba(16, 185, 129, 0.35)' : 'none',
-              cursor: 'pointer'
-            }}
-            onClick={() => {
-              window.dispatchEvent(new CustomEvent('visualEditorToggle'));
-            }}
-            title="تشغيل/إيقاف المحرر المرئي وفاحص العناصر مثل clincsa (Ctrl+Shift+D)"
-          >
-            <Layers size={18} />
-            <span>{isVisualEditorActive ? 'المحرر المرئي (نشط)' : 'المحرر المرئي'}</span>
-          </button>
         </div>
       </header>
 
