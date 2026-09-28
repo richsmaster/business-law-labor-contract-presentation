@@ -4,7 +4,7 @@ import { SlideView } from './components/SlideView';
 import { BookFrontCover } from './components/BookFrontCover';
 import { BookBackCover } from './components/BookBackCover';
 import { AnimatePresence } from 'framer-motion';
-import { Layers, Languages } from 'lucide-react';
+import { Layers, Languages, Smartphone, FileDown } from 'lucide-react';
 import { VisualEditor } from './components/VisualEditor';
 import { GoldenStarsCursor } from './components/GoldenStarsCursor';
 import { playPageTurnSound } from './utils/audio';
@@ -179,6 +179,39 @@ export const App: React.FC = () => {
         </div>
 
         <div className="top-bar-left">
+          {/* Presentation Slides PDF (16:9 Original Layout) Download Button */}
+          <a
+            href="/عرض_سلايدات_قانون_الاعمال.pdf"
+            download="عرض_سلايدات_قانون_الاعمال.pdf"
+            className="btn-mobile-pdf-link"
+            title="تحميل سلايدات العرض التقديمي كاملة بالشكل الأفقي الأصلي العالي الدقة (PDF)"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.38) 0%, rgba(184, 134, 11, 0.22) 100%)',
+              borderColor: '#fce8a6',
+              boxShadow: '0 0 16px rgba(212, 175, 55, 0.35)'
+            }}
+          >
+            <Layers size={17} />
+            <span>PDF السلايدات</span>
+            <FileDown size={15} style={{ opacity: 0.85 }} />
+          </a>
+
+          {/* Mobile PDF Download Button */}
+          <a
+            href={language === 'ku' ? '/پێشکەشکردنی_سلايده‌كانی_یاسای_کار_بۆ_مۆبایل.pdf' : '/عرض_سلايدات_قانون_الاعمال_مخصص_للجوال.pdf'}
+            download={language === 'ku' ? 'یاسای_کار_سلايدەکان_مۆبایل.pdf' : 'عرض_سلايدات_قانون_الاعمال_للجوال.pdf'}
+            className="btn-mobile-pdf-link"
+            title={language === 'ku' ? 'دابەزاندنی فایلەکانی سلايد وەک PDF بە تایبەت بۆ مۆبایل' : 'تحميل سلايدات العرض كملف PDF مخصص تماماً لشاشات الجوال'}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Smartphone size={17} />
+            <span>{language === 'ku' ? 'PDF بۆ مۆبایل' : 'PDF للجوال'}</span>
+            <FileDown size={15} style={{ opacity: 0.8 }} />
+          </a>
+
           {/* Translation Toggle Button (عربي / کوردی) with Noto Kurdish font for Kurdish & Qomra for Arabic */}
           <button
             className={`btn-translate-lang ${language === 'ku' ? 'kurdish-font' : 'qomra-font'}`}

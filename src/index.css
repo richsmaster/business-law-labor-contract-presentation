@@ -367,6 +367,32 @@ body {
   box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
 }
 
+/* Mobile PDF Download Button */
+.btn-mobile-pdf-link {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.28) 0%, rgba(184, 134, 11, 0.16) 100%);
+  border: 1.5px solid var(--gold-primary);
+  color: #fff9e6;
+  padding: 0.5rem 1.15rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35), 0 0 16px rgba(212, 175, 55, 0.25);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  font-family: var(--font-qomra);
+  cursor: pointer;
+}
+
+.btn-mobile-pdf-link:hover {
+  background: var(--gold-gradient);
+  color: #080c14;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.65);
+}
+
 .btn-close-book-nav {
   background: rgba(212, 175, 55, 0.16);
   border: 1.5px solid var(--gold-primary);
