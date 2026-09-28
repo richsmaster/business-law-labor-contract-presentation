@@ -4,7 +4,6 @@ import { SlideView } from './components/SlideView';
 import { BookFrontCover } from './components/BookFrontCover';
 import { BookBackCover } from './components/BookBackCover';
 import { AnimatePresence } from 'framer-motion';
-import { VisualEditor } from './components/VisualEditor';
 import { GoldenStarsCursor } from './components/GoldenStarsCursor';
 import { playPageTurnSound } from './utils/audio';
 
@@ -186,9 +185,6 @@ export const App: React.FC = () => {
 
       {/* Golden Stardust Mouse Trail (Hardware Accelerated) */}
       <GoldenStarsCursor />
-
-      {/* Visual Editor & Element Inspector (identical to clincsa DevInspector) */}
-      <VisualEditor />
     </div>
   );
 };
